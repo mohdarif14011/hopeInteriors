@@ -86,9 +86,9 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <section className="w-full bg-background py-12 md:py-24 lg:py-32">
+      <section className="w-full bg-background">
         <div className="container px-4 md:px-6">
-          <div className="relative aspect-[16/9] md:aspect-[2/1] lg:aspect-[2.4/1] rounded-2xl overflow-hidden">
+          <div className="relative aspect-[16/9] md:aspect-[2.4/1] lg:aspect-[3/1] rounded-2xl overflow-hidden">
             <Image
               src="https://placehold.co/1200x500.png"
               fill
@@ -270,8 +270,8 @@ export default function HomePage() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-4" />
-            <CarouselNext className="absolute right-4" />
+            <CarouselPrevious className="absolute left-[-50px]" />
+            <CarouselNext className="absolute right-[-50px]" />
            </Carousel>
            <div className="flex justify-center gap-1 text-yellow-500 mt-8">
               <Star className="fill-current"/> <Star className="fill-current"/> <Star className="fill-current"/> <Star className="fill-current"/> <Star className="fill-current"/>
