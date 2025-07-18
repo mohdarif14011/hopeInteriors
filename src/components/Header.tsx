@@ -1,10 +1,11 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, Search, ShoppingBag, X, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { FrnitureLogo } from './FrnitureLogo';
@@ -47,6 +48,12 @@ export function Header() {
                 </Button>
             </SheetTrigger>
             <SheetContent side="left" className="bg-background">
+                <SheetHeader>
+                  <SheetTitle className="sr-only">Main Menu</SheetTitle>
+                  <SheetDescription className="sr-only">
+                    Navigate through the main sections of the website.
+                  </SheetDescription>
+                </SheetHeader>
                 <div className="flex flex-col h-full">
                     <div className="flex justify-between items-center p-4 border-b">
                         <FrnitureLogo />
