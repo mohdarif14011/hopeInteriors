@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 
@@ -69,7 +69,7 @@ export default function PortfolioPage() {
       <div className="container mx-auto px-4 py-12 md:py-24">
         <div className="text-center mb-12">
            <p className="text-sm uppercase text-muted-foreground tracking-widest font-headline">Our Work</p>
-          <h1 className="text-4xl md:text-5xl font-bold font-headline mt-2 mb-4">Design Inspiration</h1>
+          <h1 className="text-4xl md:text-5xl font-bold font-headline mt-2 mb-4">Design Portfolio</h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Explore a selection of our finest work, showcasing our passion for detail and commitment to exceptional design.
           </p>
@@ -86,8 +86,8 @@ export default function PortfolioPage() {
             <TabsContent key={category} value={category}>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {(category === "All" ? portfolioItems : portfolioItems.filter(item => item.category === category)).map((item, index) => (
-                  <Card key={index} className="overflow-hidden group transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2 bg-background border-none shadow-none rounded-2xl">
-                    <div className="aspect-[4/3] overflow-hidden rounded-2xl">
+                  <Card key={index} className="overflow-hidden group transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <div className="aspect-[4/3] overflow-hidden">
                        <Image
                         src={item.image}
                         width={600}
@@ -97,10 +97,10 @@ export default function PortfolioPage() {
                         className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
-                    <CardHeader className="p-4">
+                    <CardHeader>
                       <CardTitle className="font-headline text-xl">{item.title}</CardTitle>
                     </CardHeader>
-                    <CardContent className="p-4 pt-0">
+                    <CardContent>
                       <CardDescription>{item.description}</CardDescription>
                     </CardContent>
                   </Card>

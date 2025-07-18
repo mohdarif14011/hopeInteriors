@@ -12,7 +12,7 @@ export default function ContactPage() {
     <div className="bg-background">
     <div className="container mx-auto px-4 py-12 md:py-24">
       <div className="text-center mb-12">
-         <p className="text-sm uppercase text-muted-foreground tracking-widest font-headline">Get in touch</p>
+         <p className="text-sm uppercase text-muted-foreground tracking-widest font-headline">Let's Connect</p>
         <h1 className="text-4xl md:text-5xl font-bold font-headline mt-2 mb-4">Contact Us</h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
           Have a project in mind or a question for our team? We'd love to hear from you.
@@ -20,7 +20,7 @@ export default function ContactPage() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-12 items-start">
-        <Card className="bg-secondary p-4 md:p-8 rounded-2xl">
+        <Card className="p-4 md:p-8">
           <CardHeader>
             <CardTitle className="font-headline text-2xl">Send a Message</CardTitle>
             <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
@@ -38,17 +38,16 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="space-y-2">
-                  <Label htmlFor="service">Inquiry Topic</Label>
+                  <Label htmlFor="service">I'm interested in...</Label>
                   <Select>
                       <SelectTrigger id="service">
-                          <SelectValue placeholder="Select a topic" />
+                          <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
-                          <SelectItem value="product-question">Product Question</SelectItem>
-                          <SelectItem value="order-support">Order Support</SelectItem>
-                          <SelectItem value="press-inquiry">Press Inquiry</SelectItem>
-                          <SelectItem value="collaboration">Collaboration</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
+                          <SelectItem value="design">Interior Design</SelectItem>
+                          <SelectItem value="construction">Construction</SelectItem>
+                          <SelectItem value="ai-consultation">AI Design Consultation</SelectItem>
+                          <SelectItem value="general">General Inquiry</SelectItem>
                       </SelectContent>
                   </Select>
               </div>
@@ -61,7 +60,7 @@ export default function ContactPage() {
           </CardContent>
         </Card>
         <div className="space-y-8">
-           <div className="relative aspect-video w-full rounded-2xl overflow-hidden">
+           <div className="relative aspect-video w-full rounded-xl overflow-hidden">
               <Image src="https://placehold.co/600x400.png" width={600} height={400} alt="Map to office" data-ai-hint="modern office interior" className="w-full h-full object-cover" />
             </div>
             <div className="space-y-4 text-center md:text-left">
@@ -69,7 +68,7 @@ export default function ContactPage() {
                   <Mail className="w-6 h-6 text-primary"/>
                   <div>
                       <h3 className="font-semibold font-headline">Email</h3>
-                      <p className="text-muted-foreground">contact@frniture.com</p>
+                      <p className="text-muted-foreground">contact@designverse.com</p>
                   </div>
               </div>
               <div className="flex items-center justify-center md:justify-start gap-4">
