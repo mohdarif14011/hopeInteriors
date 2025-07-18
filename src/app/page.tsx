@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Star, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Star, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
@@ -102,9 +102,9 @@ const testimonials = [
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-dvh bg-background text-foreground">
+    <div className="flex flex-col min-h-dvh bg-background text-foreground pt-20">
       {/* Hero Section */}
-      <section className="w-full h-[calc(100vh-80px)] relative flex flex-col pt-20">
+      <section className="w-full h-[calc(100vh-80px)] relative flex flex-col">
         <Image
             src="https://placehold.co/1600x900.png"
             layout="fill"
