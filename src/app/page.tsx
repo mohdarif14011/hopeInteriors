@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Star, Paintbrush, Building, Bot } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 
 export default function HomePage() {
   return (
@@ -108,71 +109,89 @@ export default function HomePage() {
               Hear from satisfied clients who have transformed their spaces with us.
             </p>
           </div>
-          <div className="mx-auto w-full max-w-sm lg:max-w-none grid lg:grid-cols-3 gap-6 pt-8">
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <Avatar>
-                    <AvatarImage src="https://placehold.co/100x100.png" data-ai-hint="woman portrait" />
-                    <AvatarFallback>SL</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="font-semibold">Sarah L.</p>
-                    <div className="flex text-yellow-400">
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                    </div>
-                  </div>
-                </div>
-                <blockquote className="text-sm text-muted-foreground">"DesignVerse transformed my living room into a masterpiece. Their attention to detail and creative vision is unparalleled. I couldn't be happier!"</blockquote>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <Avatar>
-                    <AvatarImage src="https://placehold.co/100x100.png" data-ai-hint="man portrait" />
-                    <AvatarFallback>MB</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="font-semibold">Michael B.</p>
-                     <div className="flex text-yellow-400">
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                    </div>
-                  </div>
-                </div>
-                <blockquote className="text-sm text-muted-foreground">"The construction team was professional, efficient, and delivered exceptional quality. Our home renovation was a seamless experience."</blockquote>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <Avatar>
-                    <AvatarImage src="https://placehold.co/100x100.png" data-ai-hint="woman portrait professional" />
-                    <AvatarFallback>EC</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="font-semibold">Emily C.</p>
-                     <div className="flex text-yellow-400">
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                      <Star className="w-4 h-4 fill-current" />
-                    </div>
-                  </div>
-                </div>
-                <blockquote className="text-sm text-muted-foreground">"Using the AI designer was a game-changer. It helped us visualize different styles and make confident decisions for our project."</blockquote>
-              </CardContent>
-            </Card>
-          </div>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full max-w-sm lg:max-w-none"
+          >
+            <CarouselContent className="pt-8">
+              <CarouselItem className="lg:basis-1/3">
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <Avatar>
+                          <AvatarImage src="https://placehold.co/100x100.png" data-ai-hint="woman portrait" />
+                          <AvatarFallback>SL</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <p className="font-semibold">Sarah L.</p>
+                          <div className="flex text-yellow-400">
+                            <Star className="w-4 h-4 fill-current" />
+                            <Star className="w-4 h-4 fill-current" />
+                            <Star className="w-4 h-4 fill-current" />
+                            <Star className="w-4 h-4 fill-current" />
+                            <Star className="w-4 h-4 fill-current" />
+                          </div>
+                        </div>
+                      </div>
+                      <blockquote className="text-sm text-muted-foreground">"DesignVerse transformed my living room into a masterpiece. Their attention to detail and creative vision is unparalleled. I couldn't be happier!"</blockquote>
+                    </CardContent>
+                  </Card>
+              </CarouselItem>
+              <CarouselItem className="lg:basis-1/3">
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <Avatar>
+                          <AvatarImage src="https://placehold.co/100x100.png" data-ai-hint="man portrait" />
+                          <AvatarFallback>MB</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <p className="font-semibold">Michael B.</p>
+                          <div className="flex text-yellow-400">
+                            <Star className="w-4 h-4 fill-current" />
+                            <Star className="w-4 h-4 fill-current" />
+                            <Star className="w-4 h-4 fill-current" />
+                            <Star className="w-4 h-4 fill-current" />
+                            <Star className="w-4 h-4 fill-current" />
+                          </div>
+                        </div>
+                      </div>
+                      <blockquote className="text-sm text-muted-foreground">"The construction team was professional, efficient, and delivered exceptional quality. Our home renovation was a seamless experience."</blockquote>
+                    </CardContent>
+                  </Card>
+              </CarouselItem>
+              <CarouselItem className="lg:basis-1/3">
+                  <Card>
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-4 mb-4">
+                        <Avatar>
+                          <AvatarImage src="https://placehold.co/100x100.png" data-ai-hint="woman portrait professional" />
+                          <AvatarFallback>EC</AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <p className="font-semibold">Emily C.</p>
+                          <div className="flex text-yellow-400">
+                            <Star className="w-4 h-4 fill-current" />
+                            <Star className="w-4 h-4 fill-current" />
+                            <Star className="w-4 h-4 fill-current" />
+                            <Star className="w-4 h-4 fill-current" />
+                            <Star className="w-4 h-4 fill-current" />
+                          </div>
+                        </div>
+                      </div>
+                      <blockquote className="text-sm text-muted-foreground">"Using the AI designer was a game-changer. It helped us visualize different styles and make confident decisions for our project."</blockquote>
+                    </CardContent>
+                  </Card>
+              </CarouselItem>
+            </CarouselContent>
+            <div className="hidden md:block">
+              <CarouselPrevious className="absolute -left-4 top-1/2 -translate-y-1/2" />
+              <CarouselNext className="absolute -right-4 top-1/2 -translate-y-1/2" />
+            </div>
+          </Carousel>
         </div>
       </section>
 
