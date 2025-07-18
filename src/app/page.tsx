@@ -9,21 +9,21 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-card">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-            <div className="flex flex-col justify-center space-y-4">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none font-headline">
+      <section className="w-full bg-card">
+        <div className="container mx-auto px-0">
+          <div className="grid lg:grid-cols-2">
+            <div className="flex flex-col justify-center space-y-6 p-8 md:p-12 lg:p-16">
+              <div className="space-y-4">
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none font-headline">
                   Crafting Spaces, Building Dreams
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
                   Welcome to DesignVerse. We offer expert interior design, robust construction, and innovative AI-powered design consultations to bring your vision to life.
                 </p>
               </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
+              <div className="flex flex-col gap-4 min-[400px]:flex-row">
                 <Button asChild size="lg">
                   <Link href="/services">Explore Our Services</Link>
                 </Button>
@@ -32,14 +32,15 @@ export default function HomePage() {
                 </Button>
               </div>
             </div>
-            <Image
-              src="https://placehold.co/600x400.png"
-              width={600}
-              height={400}
-              alt="Hero"
-              data-ai-hint="modern architecture"
-              className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last"
-            />
+            <div className="relative h-96 lg:h-auto">
+              <Image
+                src="https://placehold.co/800x900.png"
+                fill
+                alt="Hero"
+                data-ai-hint="modern architecture"
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -49,7 +50,7 @@ export default function HomePage() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">Our Services</div>
+              <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm font-headline">Our Services</div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline">A Universe of Design Possibilities</h2>
               <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 From concept to completion, we provide a comprehensive suite of services to meet all your design and construction needs.
@@ -58,7 +59,7 @@ export default function HomePage() {
           </div>
           <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none lg:grid-cols-3 pt-12">
             <Link href="/portfolio">
-                <Card className="h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <Card className="h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-xl bg-card">
                   <CardHeader>
                     <Paintbrush className="h-8 w-8 mb-2 text-primary" />
                     <CardTitle className="font-headline">Interior Design</CardTitle>
@@ -71,7 +72,7 @@ export default function HomePage() {
                 </Card>
             </Link>
             <Link href="/construction">
-              <Card className="h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+              <Card className="h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-xl bg-card">
                 <CardHeader>
                   <Building className="h-8 w-8 mb-2 text-primary" />
                   <CardTitle className="font-headline">Construction</CardTitle>
@@ -84,7 +85,7 @@ export default function HomePage() {
               </Card>
             </Link>
             <Link href="/ai-designer">
-              <Card className="h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+              <Card className="h-full transform transition-transform duration-300 hover:scale-105 hover:shadow-xl bg-card">
                 <CardHeader>
                   <Bot className="h-8 w-8 mb-2 text-primary" />
                   <CardTitle className="font-headline">AI Design Ideas</CardTitle>
@@ -101,7 +102,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-secondary">
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-card">
         <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
           <div className="space-y-3">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight font-headline">What Our Clients Say</h2>
@@ -114,11 +115,11 @@ export default function HomePage() {
               align: "start",
               loop: true,
             }}
-            className="w-full max-w-sm lg:max-w-none"
+            className="w-full max-w-sm lg:max-w-4xl"
           >
             <CarouselContent className="pt-8">
-              <CarouselItem className="lg:basis-1/3">
-                  <Card>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <Card className="bg-background">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4 mb-4">
                         <Avatar>
@@ -140,8 +141,8 @@ export default function HomePage() {
                     </CardContent>
                   </Card>
               </CarouselItem>
-              <CarouselItem className="lg:basis-1/3">
-                  <Card>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <Card className="bg-background">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4 mb-4">
                         <Avatar>
@@ -163,8 +164,8 @@ export default function HomePage() {
                     </CardContent>
                   </Card>
               </CarouselItem>
-              <CarouselItem className="lg:basis-1/3">
-                  <Card>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                  <Card className="bg-background">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-4 mb-4">
                         <Avatar>
@@ -187,10 +188,8 @@ export default function HomePage() {
                   </Card>
               </CarouselItem>
             </CarouselContent>
-            <div className="hidden md:block">
-              <CarouselPrevious className="absolute -left-4 top-1/2 -translate-y-1/2" />
-              <CarouselNext className="absolute -right-4 top-1/2 -translate-y-1/2" />
-            </div>
+            <CarouselPrevious className="absolute -left-4 top-1/2 -translate-y-1/2" />
+            <CarouselNext className="absolute -right-4 top-1/2 -translate-y-1/2" />
           </Carousel>
         </div>
       </section>
