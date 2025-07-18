@@ -104,7 +104,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-dvh bg-background text-foreground">
       {/* Hero Section */}
-      <section className="w-full h-screen relative flex flex-col">
+      <section className="w-full h-[calc(100vh-80px)] relative flex flex-col pt-20">
         <Image
             src="https://placehold.co/1600x900.png"
             layout="fill"
@@ -133,7 +133,7 @@ export default function HomePage() {
             </div>
         </div>
 
-        <div className="container mx-auto px-4 py-8 mt-auto">
+        <div className="container mx-auto px-4 py-8">
             <Carousel opts={{ align: "start", loop: true }} className="w-full max-w-lg">
                 <CarouselContent>
                     {heroCollections.map((item, index) => (
