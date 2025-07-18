@@ -74,7 +74,7 @@ const roomCategories = [
     {
         name: "Home Decor & Accessories",
         description: "Stylish, unique, personal",
-        image: "https://placehold.co/600x600.png',
+        image: "https://placehold.co/600x600.png",
         hint: 'home decor'
     }
 ]
@@ -176,16 +176,17 @@ export default function HomePage() {
       {/* Most-Loved Picks Section */}
       <section className="py-24 bg-secondary">
         <div className="container mx-auto px-4">
+            <Carousel opts={{ align: "start", loop: true }}>
             <div className="flex justify-between items-end mb-12">
                 <div>
                     <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Collection</p>
                     <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-2">Our Most-Loved Picks</h2>
                 </div>
-                <div className="hidden md:block">
+                <div className="hidden md:flex gap-2">
+                  <CarouselPrevious />
                   <CarouselNext />
                 </div>
             </div>
-            <Carousel opts={{ align: "start", loop: true }}>
               <CarouselContent>
                 {lovedPicks.map((item) => (
                   <CarouselItem key={item.sku} className="md:basis-1/2 lg:basis-1/3">
@@ -244,18 +245,17 @@ export default function HomePage() {
       {/* Testimonials Section */}
       <section className="py-24 bg-secondary">
           <div className="container mx-auto px-4">
-            <div className="flex justify-between items-end mb-12">
-                <div>
-                    <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Testimonials</p>
-                    <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-2">Hear from Our Happy Customers</h2>
-                </div>
-                <div className="flex items-center gap-2">
-                    <CarouselPrevious className="relative -left-0 -top-0 -translate-y-0" />
-                    <CarouselNext className="relative -right-0 -top-0 -translate-y-0" />
-                </div>
-            </div>
-
             <Carousel opts={{ align: "start", loop: true }}>
+                <div className="flex justify-between items-end mb-12">
+                    <div>
+                        <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Testimonials</p>
+                        <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-2">Hear from Our Happy Customers</h2>
+                    </div>
+                    <div className="hidden md:flex items-center gap-2">
+                        <CarouselPrevious className="relative -left-0 -top-0 -translate-y-0" />
+                        <CarouselNext className="relative -right-0 -top-0 -translate-y-0" />
+                    </div>
+                </div>
                 <CarouselContent>
                     {testimonials.map((testimonial, index) => (
                     <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
