@@ -2,20 +2,28 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, Sprout } from 'lucide-react';
+import { Menu, Search, ShoppingBag, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { href: '/services', label: 'Services' },
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/construction', label: 'Construction' },
-  { href: '/ai-designer', label: 'AI Designer' },
-  { href: '/consultants', label: 'Consultants' },
+  { href: '/', label: 'Home' },
+  { href: '/portfolio', label: 'Inspiration' },
+  { href: '/construction', label: 'Products' },
+  { href: '/testimonials', label: 'Testimonials' },
   { href: '/contact', label: 'Contact' },
 ];
+
+function FrnitureLogo() {
+  return (
+    <div className="font-headline text-2xl font-bold tracking-wide">
+      FRNITURE
+    </div>
+  );
+}
+
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,55 +31,76 @@ export function Header() {
 
   return (
     <header className="bg-background/80 sticky top-0 z-50 w-full border-b backdrop-blur-sm">
-      <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <Sprout className="h-6 w-6 text-primary" />
-          <span className="font-bold text-lg font-headline">DesignVerse</span>
+      <div className="container flex h-20 items-center justify-between">
+        <Link href="/" className="hidden md:flex items-center gap-2">
+           <FrnitureLogo />
         </Link>
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+        
+        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
           {navLinks.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
               className={cn(
                 'transition-colors hover:text-primary',
-                pathname === href ? 'text-primary' : 'text-muted-foreground'
+                pathname === href ? 'text-primary font-semibold' : 'text-muted-foreground'
               )}
             >
               {label}
             </Link>
           ))}
         </nav>
-        <div className="md:hidden">
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+
+        <div className="md:hidden flex-1">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-4 w-4" />
+                <Button variant="ghost" size="icon">
+                <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
-              </Button>
+                </Button>
             </SheetTrigger>
-            <SheetContent side="right">
-              <div className="grid gap-4 py-6">
+            <SheetContent side="left">
+                <div className="grid gap-4 py-6">
                 <Link href="/" className="flex items-center gap-2 mb-4" onClick={() => setIsOpen(false)}>
-                  <Sprout className="h-6 w-6 text-primary" />
-                  <span className="font-bold text-lg font-headline">DesignVerse</span>
+                    <FrnitureLogo />
                 </Link>
                 {navLinks.map(({ href, label }) => (
-                  <Link
+                    <Link
                     key={href}
                     href={href}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      "font-medium transition-colors hover:text-primary",
-                      pathname === href ? 'text-primary' : 'text-foreground'
+                        "font-medium text-lg transition-colors hover:text-primary",
+                        pathname === href ? 'text-primary' : 'text-foreground'
                     )}
-                  >
+                    >
                     {label}
-                  </Link>
+                    </Link>
                 ))}
-              </div>
+                </div>
             </SheetContent>
-          </Sheet>
+            </Sheet>
+        </div>
+
+        <div className="md:hidden">
+            <Link href="/" className="flex items-center gap-2">
+                <FrnitureLogo />
+            </Link>
+        </div>
+        
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" size="icon">
+            <Search className="h-5 w-5" />
+            <span className="sr-only">Search</span>
+          </Button>
+           <Button variant="ghost" size="icon">
+            <User className="h-5 w-5" />
+            <span className="sr-only">Account</span>
+          </Button>
+          <Button variant="ghost" size="icon">
+            <ShoppingBag className="h-5 w-5" />
+            <span className="sr-only">Cart</span>
+          </Button>
         </div>
       </div>
     </header>
