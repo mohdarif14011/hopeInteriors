@@ -18,8 +18,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Space Grotesk', 'sans-serif'],
+        body: ['Poppins', 'sans-serif'],
+        headline: ['Playfair Display', 'serif'],
       },
       colors: {
         border: 'hsl(var(--border))',
