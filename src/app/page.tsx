@@ -86,29 +86,28 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <section className="w-full bg-background">
-        <div className="container px-4 md:px-6">
-          <div className="relative aspect-[16/9] md:aspect-[2.4/1] lg:aspect-[3/1] rounded-2xl overflow-hidden">
-            <Image
-              src="https://placehold.co/1200x500.png"
-              fill
-              alt="Hero"
-              data-ai-hint="modern interior design"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex flex-col justify-end p-8 md:p-12">
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white font-headline">
-                Discover Timeless Furniture for Every Space
-              </h1>
-              <p className="max-w-[600px] text-white/90 md:text-xl mt-4">
-                A curated selection of designs that bring comfort, style, and functionality to your home.
-              </p>
-              <div className="flex gap-4 mt-6">
-                <Button size="lg">Shop Now</Button>
-                <Button variant="outline" size="lg" className="bg-transparent text-white border-white hover:bg-white hover:text-black">
-                  Explore Designs
-                </Button>
-              </div>
+      <section className="w-full">
+        <div className="relative h-[calc(100vh-5rem)] w-full">
+          <Image
+            src="https://placehold.co/1920x1080.png"
+            fill
+            alt="Hero"
+            data-ai-hint="modern interior design"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          <div className="absolute inset-0 container px-4 md:px-6 flex flex-col justify-end pb-12 md:pb-24">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white font-headline">
+              Discover Timeless Furniture for Every Space
+            </h1>
+            <p className="max-w-[600px] text-white/90 md:text-xl mt-4">
+              A curated selection of designs that bring comfort, style, and functionality to your home.
+            </p>
+            <div className="flex gap-4 mt-6">
+              <Button size="lg">Shop Now</Button>
+              <Button variant="outline" size="lg" className="bg-transparent text-white border-white hover:bg-white hover:text-black">
+                Explore Designs
+              </Button>
             </div>
           </div>
         </div>
@@ -270,8 +269,8 @@ export default function HomePage() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-[-50px]" />
-            <CarouselNext className="absolute right-[-50px]" />
+            <CarouselPrevious className="absolute left-[-50px] top-1/2 -translate-y-1/2" />
+            <CarouselNext className="absolute right-[-50px] top-1/2 -translate-y-1/2" />
            </Carousel>
            <div className="flex justify-center gap-1 text-yellow-500 mt-8">
               <Star className="fill-current"/> <Star className="fill-current"/> <Star className="fill-current"/> <Star className="fill-current"/> <Star className="fill-current"/>
