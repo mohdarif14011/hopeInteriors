@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -269,8 +270,8 @@ export default function HomePage() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-[-50px]" />
-            <CarouselNext className="absolute right-[-50px]"/>
+            <CarouselPrevious className="absolute left-4" />
+            <CarouselNext className="absolute right-4" />
            </Carousel>
            <div className="flex justify-center gap-1 text-yellow-500 mt-8">
               <Star className="fill-current"/> <Star className="fill-current"/> <Star className="fill-current"/> <Star className="fill-current"/> <Star className="fill-current"/>
