@@ -30,10 +30,10 @@ export default function AIDesignerPage() {
     };
 
     return (
-        <div className="bg-background">
+        <div className="bg-background pt-20">
             <div className="container mx-auto px-4 py-12 md:py-24">
                 <div className="text-center mb-12">
-                    <p className="text-sm uppercase text-muted-foreground tracking-widest font-headline">AI-Powered Creativity</p>
+                    <p className="text-sm uppercase text-muted-foreground tracking-widest font-semibold">AI-Powered Creativity</p>
                     <h1 className="text-4xl md:text-5xl font-bold font-headline mt-2 mb-4">AI Design Idea Generator</h1>
                     <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
                         Stuck for inspiration? Describe your dream style, and let our AI generate unique interior design concepts for you in seconds.
@@ -41,7 +41,7 @@ export default function AIDesignerPage() {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-12">
-                    <Card className="p-4 md:p-8">
+                    <Card className="p-4 md:p-8 bg-secondary border-none">
                         <CardHeader>
                             <CardTitle className="font-headline text-2xl">Describe Your Style</CardTitle>
                             <CardDescription>Tell us about the colors, textures, and moods you love.</CardDescription>
@@ -56,6 +56,7 @@ export default function AIDesignerPage() {
                                         rows={5}
                                         value={style}
                                         onChange={(e) => setStyle(e.target.value)}
+                                        className="bg-background"
                                     />
                                 </div>
                                 <Button type="submit" className="w-full" disabled={loading}>
@@ -66,7 +67,7 @@ export default function AIDesignerPage() {
                         </CardContent>
                     </Card>
 
-                    <Card className="p-4 md:p-8">
+                    <Card className="p-4 md:p-8 bg-secondary border-none">
                         <CardHeader>
                             <CardTitle className="font-headline text-2xl">Generated Ideas</CardTitle>
                             <CardDescription>Your AI-crafted design concepts will appear here.</CardDescription>

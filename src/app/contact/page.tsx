@@ -9,10 +9,10 @@ import Image from "next/image";
 
 export default function ContactPage() {
   return (
-    <div className="bg-background">
+    <div className="bg-background pt-20">
     <div className="container mx-auto px-4 py-12 md:py-24">
       <div className="text-center mb-12">
-         <p className="text-sm uppercase text-muted-foreground tracking-widest font-headline">Let's Connect</p>
+         <p className="text-sm uppercase text-muted-foreground tracking-widest font-semibold">Let's Connect</p>
         <h1 className="text-4xl md:text-5xl font-bold font-headline mt-2 mb-4">Contact Us</h1>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
           Have a project in mind or a question for our team? We'd love to hear from you.
@@ -20,7 +20,7 @@ export default function ContactPage() {
       </div>
 
       <div className="grid md:grid-cols-2 gap-12 items-start">
-        <Card className="p-4 md:p-8">
+        <Card className="p-4 md:p-8 border-none bg-secondary">
           <CardHeader>
             <CardTitle className="font-headline text-2xl">Send a Message</CardTitle>
             <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
@@ -44,9 +44,9 @@ export default function ContactPage() {
                           <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
-                          <SelectItem value="design">Interior Design</SelectItem>
-                          <SelectItem value="construction">Construction</SelectItem>
-                          <SelectItem value="ai-consultation">AI Design Consultation</SelectItem>
+                          <SelectItem value="design">Furniture Consultation</SelectItem>
+                          <SelectItem value="delivery">Delivery & Assembly</SelectItem>
+                          <SelectItem value="custom">Custom Orders</SelectItem>
                           <SelectItem value="general">General Inquiry</SelectItem>
                       </SelectContent>
                   </Select>
@@ -60,29 +60,29 @@ export default function ContactPage() {
           </CardContent>
         </Card>
         <div className="space-y-8">
-           <div className="relative aspect-video w-full rounded-xl overflow-hidden">
-              <Image src="https://placehold.co/600x400.png" width={600} height={400} alt="Map to office" data-ai-hint="modern office interior" className="w-full h-full object-cover" />
+           <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden">
+              <Image src="https://placehold.co/600x450.png" width={600} height={450} alt="Map to office" data-ai-hint="modern office interior" className="w-full h-full object-cover" />
             </div>
-            <div className="space-y-4 text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start gap-4">
-                  <Mail className="w-6 h-6 text-primary"/>
+            <div className="space-y-6 text-left">
+              <div className="flex items-start gap-4">
+                  <Mail className="w-6 h-6 text-primary mt-1"/>
                   <div>
-                      <h3 className="font-semibold font-headline">Email</h3>
-                      <p className="text-muted-foreground">contact@designverse.com</p>
+                      <h3 className="font-semibold font-headline text-lg">Email</h3>
+                      <p className="text-muted-foreground">contact@frniture.com</p>
                   </div>
               </div>
-              <div className="flex items-center justify-center md:justify-start gap-4">
-                  <Phone className="w-6 h-6 text-primary"/>
+              <div className="flex items-start gap-4">
+                  <Phone className="w-6 h-6 text-primary mt-1"/>
                   <div>
-                      <h3 className="font-semibold font-headline">Phone</h3>
+                      <h3 className="font-semibold font-headline text-lg">Phone</h3>
                       <p className="text-muted-foreground">(123) 456-7890</p>
                   </div>
               </div>
-              <div className="flex items-center justify-center md:justify-start gap-4">
-                  <MapPin className="w-6 h-6 text-primary"/>
+              <div className="flex items-start gap-4">
+                  <MapPin className="w-6 h-6 text-primary mt-1"/>
                   <div>
-                      <h3 className="font-semibold font-headline">Office</h3>
-                      <p className="text-muted-foreground">123 Design Avenue, Creativity City</p>
+                      <h3 className="font-semibold font-headline text-lg">Office</h3>
+                      <p className="text-muted-foreground">123 Furniture Lane, Design District</p>
                   </div>
               </div>
           </div>

@@ -18,7 +18,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        body: ['Poppins', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
         headline: ['Playfair Display', 'serif'],
       },
       colors: {

@@ -1,313 +1,305 @@
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Star, CheckCircle, PlayCircle, Sprout, Handshake, Target } from 'lucide-react';
+import { Star, ArrowDown, Package, Home, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-
-const features = [
-  { text: "Modular Kitchen" },
-  { text: "Premium Materials" },
-  { text: "Latest Technology" },
-  { text: "Expert Designers" },
-  { text: "Timely Delivery" },
-  { text: "Perfect Finishing" },
-];
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 const stats = [
-    { value: "27+", label: "Qualifications" },
-    { value: "78+", label: "Projects Done" },
-    { value: "38+", label: "Projects in Work" },
-    { value: "98+", label: "Positive Review" },
-]
+    { 
+        icon: <Package className="w-8 h-8 text-foreground" />,
+        value: "10,000+", 
+        label: "Items Collection" 
+    },
+    { 
+        icon: <Home className="w-8 h-8 text-foreground" />,
+        value: "5,000+", 
+        label: "Happy customers & growing" 
+    },
+    { 
+        icon: <Star className="w-8 h-8 text-foreground" />,
+        value: "4.9/5", 
+        label: "Based on all of our reviews" 
+    },
+];
 
-const workProgress = [
+const lovedPicks = [
     {
-        step: "01",
-        title: "Meet & Greet",
-        description: "Initial consultation to understand your vision, needs, and the specifics of your space."
+        sku: 'S123',
+        name: 'Modern Linen Sofa',
+        description: '3-seater, beige linen',
+        price: 999,
+        image: 'https://placehold.co/400x400.png',
+        hint: 'modern sofa'
     },
     {
-        step: "02",
-        title: "Design & Plan",
-        description: "Our experts craft a detailed design and layout, selecting materials and finishes."
+        sku: 'B789',
+        name: 'Tufted Velvet Bed',
+        description: 'Queen size, grey velvet',
+        price: 789,
+        image: 'https://placehold.co/400x400.png',
+        hint: 'velvet bed'
     },
     {
-        step: "03",
-        title: "Build & Install",
-        description: "Our skilled team brings the design to life with precision and quality craftsmanship."
+        sku: 'T240',
+        name: 'Marble Coffee Table',
+        description: 'Round, black marble',
+        price: 645,
+        image: 'https://placehold.co/400x400.png',
+        hint: 'marble table'
+    },
+];
+
+const roomCategories = [
+    {
+        name: "Living Room Collection",
+        description: "Comfortable, elegant, stylish",
+        image: "https://placehold.co/600x600.png",
+        hint: "modern living room"
     },
     {
-        step: "04",
-        title: "Final Review",
-        description: "We walk you through your new kitchen to ensure every detail is perfect."
+        name: "Bedroom Essentials",
+        description: "Cozy, tranquil, serene",
+        image: "https://placehold.co/600x600.png",
+        hint: "cozy bedroom"
+    },
+    {
+        name: "Dining Room Elegance",
+        description: "Modern, chic, functional",
+        image: "https://placehold.co/600x600.png",
+        hint: "dining room"
+    },
+    {
+        name: "Home Decor & Accessories",
+        description: "Stylish, unique, personal",
+        image: "https://placehold.co/600x600.png',
+        hint: 'home decor'
     }
 ]
 
+const testimonials = [
+  {
+    name: "Emily Watson",
+    comment: "The team at Frniture was amazing. They helped me find the perfect pieces for my new apartment and the delivery was seamless. I couldn't be happier with the quality and style!",
+    avatar: "https://placehold.co/100x100.png",
+    fallback: "EW",
+  },
+  {
+    name: "John Smith",
+    comment: "I've been a loyal customer for years. The craftsmanship is consistently excellent, and their designs are always on-trend yet timeless. Highly recommend for anyone looking to invest in quality furniture.",
+    avatar: "https://placehold.co/100x100.png",
+    fallback: "JS",
+  },
+  {
+    name: "Sarah Miller",
+    comment: "From the initial idea to the final installation, the team was professional, creative, and attentive to every detail. They transformed our living room into a space that's not only beautiful but perfectly functional.",
+    avatar: "https://placehold.co/100x100.png",
+    fallback: "SM",
+  },
+];
+
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
+    <div className="flex flex-col min-h-dvh bg-background text-foreground">
       {/* Hero Section */}
-      <section className="w-full bg-secondary text-secondary-foreground">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-8 items-center min-h-screen pt-20 lg:pt-0">
-            <div className="flex flex-col justify-center space-y-6">
-              <div className="space-y-4">
-                <h1 className="text-4xl lg:text-6xl font-bold font-headline tracking-tight">
-                  Design Your Kitchen With Our Experts
+      <section className="w-full h-[calc(100vh-80px)] relative">
+        <div className="container mx-auto px-4 h-full flex flex-col justify-center">
+            <div className="max-w-xl text-left space-y-6">
+                <h1 className="text-5xl lg:text-7xl font-bold font-headline tracking-tight">
+                Discover Timeless Furniture for Every Space
                 </h1>
-                <p className="max-w-[600px] text-secondary-foreground/80 md:text-xl">
-                  Bespoke kitchen designs that blend functionality with timeless elegance. Our team is dedicated to creating spaces that inspire.
+                <p className="text-lg text-muted-foreground">
+                A selection of our best work, which shows our passion for detail and commitment to our clients.
                 </p>
-              </div>
-              <div className="flex flex-col gap-4 min-[400px]:flex-row">
-                <Button asChild size="lg">
-                  <Link href="/contact">Book a Free Design</Link>
-                </Button>
-              </div>
-            </div>
-            <div className="relative h-96 lg:h-[600px] w-full">
-              <Image
-                src="https://placehold.co/800x900.png"
-                fill
-                alt="Modern kitchen design"
-                data-ai-hint="modern kitchen"
-                className="object-cover rounded-xl"
-              />
-              <div className="absolute -bottom-8 right-8 bg-background/80 backdrop-blur-sm p-6 rounded-xl shadow-lg text-center text-foreground">
-                <p className="text-sm uppercase tracking-widest">Est.</p>
-                <p className="text-5xl font-bold font-headline">1920</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Discover a New Look Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden">
-                    <Image
-                        src="https://placehold.co/600x800.png"
-                        fill
-                        alt="Stylish kitchen interior"
-                        data-ai-hint="stylish kitchen"
-                        className="object-cover"
-                    />
-                </div>
-                <div>
-                    <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Our Process</p>
-                    <h2 className="text-3xl lg:text-4xl font-bold font-headline mt-2 mb-6">Discover a New Look For Your Kitchen</h2>
-                    <p className="text-muted-foreground mb-8 max-w-prose">We believe in a collaborative process, working closely with you to design and build the kitchen of your dreams. From the initial concept to the final installation, our team ensures a seamless and enjoyable experience.</p>
-                    <div className="grid grid-cols-2 gap-x-8 gap-y-4 mb-10">
-                        {features.map(feature => (
-                            <div key={feature.text} className="flex items-center gap-3">
-                                <CheckCircle className="w-5 h-5 text-accent"/>
-                                <span className="font-medium">{feature.text}</span>
-                            </div>
-                        ))}
-                    </div>
-                     <Button asChild size="lg">
-                      <Link href="/services">Our Services</Link>
+                <div className="flex flex-col gap-4 min-[400px]:flex-row">
+                    <Button asChild size="lg">
+                        <Link href="/contact">View More</Link>
+                    </Button>
+                    <Button asChild size="lg" variant="outline">
+                        <Link href="/services">Explore Services</Link>
                     </Button>
                 </div>
             </div>
         </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-24">
-          <div className="container mx-auto px-4">
-              <div className="grid lg:grid-cols-2 gap-12 items-start">
-                  <div>
-                    <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Our Expertise</p>
-                    <h2 className="text-3xl lg:text-4xl font-bold font-headline mt-2 mb-6">We provide all-in-one modular kitchen services</h2>
-                  </div>
-                  <Accordion type="single" collapsible className="w-full">
-                    <AccordionItem value="item-1">
-                        <AccordionTrigger className="text-lg font-semibold">Other Design</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                        Yes, beyond kitchens, we offer comprehensive interior design services for living rooms, bedrooms, bathrooms, and entire homes to create cohesive and beautiful living spaces.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-2">
-                        <AccordionTrigger className="text-lg font-semibold">Interior Plans</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                        Our interior plans are detailed blueprints covering everything from layout and furniture placement to lighting and color schemes, ensuring a flawless execution of the design.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-3">
-                        <AccordionTrigger className="text-lg font-semibold">Products</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                        We source high-quality materials, fixtures, and furnishings from a curated list of trusted suppliers to ensure durability and a premium finish for your project.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-4">
-                        <AccordionTrigger className="text-lg font-semibold">Installation</AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground">
-                        Our professional installation team handles every aspect of the build with precision and care, ensuring your new space is assembled to the highest standards.
-                        </AccordionContent>
-                    </AccordionItem>
-                    </Accordion>
-              </div>
-          </div>
-      </section>
-
-      {/* Latest Kitchens Section */}
-      <section className="py-24 bg-secondary text-secondary-foreground">
-        <div className="container mx-auto px-4">
-            <div className="flex justify-between items-end mb-12">
-                <div>
-                    <p className="text-sm uppercase tracking-widest text-secondary-foreground/60 font-semibold">Portfolio</p>
-                    <h2 className="text-3xl lg:text-4xl font-bold font-headline mt-2">Our Latest Kitchens Design</h2>
-                </div>
-                <Button asChild variant="outline">
-                  <Link href="/portfolio">View All Projects</Link>
-                </Button>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <Link href="/portfolio/modern-minimalist-kitchen">
-                    <div className="group overflow-hidden rounded-xl">
-                        <Image src="https://placehold.co/600x800.png" width={600} height={800} alt="Modern Minimalist Kitchen" data-ai-hint="minimalist kitchen" className="w-full h-full object-cover aspect-[3/4] transition-transform duration-300 group-hover:scale-105"/>
-                    </div>
-                </Link>
-                 <Link href="/portfolio/scandinavian-kitchen">
-                    <div className="group overflow-hidden rounded-xl">
-                        <Image src="https://placehold.co/600x800.png" width={600} height={800} alt="Scandinavian Kitchen" data-ai-hint="scandinavian kitchen" className="w-full h-full object-cover aspect-[3/4] transition-transform duration-300 group-hover:scale-105"/>
-                    </div>
-                </Link>
-                 <Link href="/portfolio/industrial-chic-kitchen">
-                    <div className="group overflow-hidden rounded-xl">
-                        <Image src="https://placehold.co/600x800.png" width={600} height={800} alt="Industrial Chic Kitchen" data-ai-hint="industrial kitchen" className="w-full h-full object-cover aspect-[3/4] transition-transform duration-300 group-hover:scale-105"/>
-                    </div>
-                </Link>
-                 <Link href="/portfolio/farmhouse-kitchen">
-                    <div className="group overflow-hidden rounded-xl">
-                        <Image src="https://placehold.co/600x800.png" width={600} height={800} alt="Modern Farmhouse Kitchen" data-ai-hint="farmhouse kitchen" className="w-full h-full object-cover aspect-[3/4] transition-transform duration-300 group-hover:scale-105"/>
-                    </div>
-                </Link>
+        <Image
+            src="https://placehold.co/1600x900.png"
+            layout="fill"
+            alt="Modern living room with stylish furniture"
+            data-ai-hint="modern living room"
+            className="object-cover -z-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent -z-10"></div>
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
+            <div className="w-10 h-10 rounded-full border border-foreground/30 flex items-center justify-center">
+                <ArrowDown className="w-6 h-6" />
             </div>
         </div>
       </section>
 
-      {/* Stats and Testimonial Section */}
-        <section className="py-24">
-            <div className="container mx-auto px-4">
-                <div className="grid lg:grid-cols-4 gap-8 mb-20 text-center">
-                    {stats.map(stat => (
-                        <div key={stat.label}>
-                            <p className="text-5xl font-bold font-headline text-accent">{stat.value}</p>
-                            <p className="text-muted-foreground mt-2">{stat.label}</p>
+      {/* Crafting Comfort Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-4">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">ABOUT US</p>
+                    <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-4 mb-6">Crafting Comfort, Defining Spaces</h2>
+                    <p className="text-muted-foreground mb-8 max-w-prose">
+                        We believe that furniture should be more than just functional; it should be a reflection of your personality and a source of comfort and joy. Our mission is to provide you with high-quality, beautifully designed pieces that stand the test of time.
+                    </p>
+                     <div className="grid gap-6">
+                        {stats.map(stat => (
+                            <div key={stat.label} className="flex items-center gap-4">
+                                <div className="bg-secondary p-3 rounded-full">{stat.icon}</div>
+                                <div>
+                                    <p className="text-2xl font-bold">{stat.value}</p>
+                                    <p className="text-muted-foreground">{stat.label}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                 <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden">
+                    <Image
+                        src="https://placehold.co/600x800.png"
+                        fill
+                        alt="Stylish chair in a well-lit room"
+                        data-ai-hint="stylish chair room"
+                        className="object-cover"
+                    />
+                </div>
+            </div>
+        </div>
+      </section>
+      
+      {/* Most-Loved Picks Section */}
+      <section className="py-24 bg-secondary">
+        <div className="container mx-auto px-4">
+            <div className="flex justify-between items-end mb-12">
+                <div>
+                    <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Collection</p>
+                    <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-2">Our Most-Loved Picks</h2>
+                </div>
+                <div className="hidden md:block">
+                  <CarouselNext />
+                </div>
+            </div>
+            <Carousel opts={{ align: "start", loop: true }}>
+              <CarouselContent>
+                {lovedPicks.map((item) => (
+                  <CarouselItem key={item.sku} className="md:basis-1/2 lg:basis-1/3">
+                    <Card className="overflow-hidden border-none shadow-none bg-transparent">
+                      <CardContent className="p-0">
+                        <div className="bg-background rounded-lg p-4 aspect-square relative group mb-4">
+                            <Image src={item.image} width={400} height={400} alt={item.name} data-ai-hint={item.hint} className="w-full h-full object-contain"/>
                         </div>
+                        <div className="flex justify-between items-start">
+                            <div>
+                                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{item.sku}</p>
+                                <h3 className="text-lg font-semibold font-headline">{item.name}</h3>
+                                <p className="text-sm text-muted-foreground">{item.description}</p>
+                            </div>
+                            <p className="text-lg font-bold">${item.price}</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+        </div>
+      </section>
+      
+       {/* Find the Perfect Piece Section */}
+      <section className="py-24">
+        <div className="container mx-auto px-4">
+            <div className="flex justify-between items-end mb-12">
+                <div>
+                    <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Our Categories</p>
+                    <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-2">Find the Perfect Piece for Every Room</h2>
+                </div>
+                <p className="text-muted-foreground max-w-md hidden lg:block">
+                    Explore our curated collections for every corner of your home, designed to bring harmony, comfort, and style to your life.
+                </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {roomCategories.map(category => (
+                    <Link href="/portfolio" key={category.name}>
+                        <div className="relative group overflow-hidden rounded-xl aspect-square">
+                            <Image src={category.image} layout="fill" objectFit="cover" alt={category.name} data-ai-hint={category.hint} />
+                            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
+                            <div className="absolute bottom-0 left-0 p-6 text-white">
+                                <h3 className="text-xl font-bold font-headline">{category.name}</h3>
+                                <p className="text-sm opacity-80">{category.description}</p>
+                            </div>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+        </div>
+      </section>
+
+
+      {/* Testimonials Section */}
+      <section className="py-24 bg-secondary">
+          <div className="container mx-auto px-4">
+            <div className="flex justify-between items-end mb-12">
+                <div>
+                    <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Testimonials</p>
+                    <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-2">Hear from Our Happy Customers</h2>
+                </div>
+                <div className="flex items-center gap-2">
+                    <CarouselPrevious className="relative -left-0 -top-0 -translate-y-0" />
+                    <CarouselNext className="relative -right-0 -top-0 -translate-y-0" />
+                </div>
+            </div>
+
+            <Carousel opts={{ align: "start", loop: true }}>
+                <CarouselContent>
+                    {testimonials.map((testimonial, index) => (
+                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                        <Card className="h-full bg-background border-none shadow-sm flex flex-col justify-between p-8">
+                            <div>
+                                <div className="flex text-yellow-500 mb-4">
+                                    {[...Array(5)].map((_, i) => (
+                                        <Star key={i} className="w-5 h-5 fill-current" />
+                                    ))}
+                                </div>
+                                <blockquote className="text-base text-muted-foreground mb-6">
+                                    "{testimonial.comment}"
+                                </blockquote>
+                            </div>
+                            <div className="flex items-center gap-4">
+                                <Avatar className="w-12 h-12">
+                                    <AvatarImage src={testimonial.avatar} data-ai-hint="person portrait"/>
+                                    <AvatarFallback>{testimonial.fallback}</AvatarFallback>
+                                </Avatar>
+                                <div>
+                                    <p className="font-semibold">{testimonial.name}</p>
+                                </div>
+                            </div>
+                        </Card>
+                    </CarouselItem>
                     ))}
-                </div>
+                </CarouselContent>
+            </Carousel>
+          </div>
+      </section>
 
-                <div className="text-center max-w-3xl mx-auto">
-                    <div className="flex justify-center mb-6">
-                        <Avatar className="w-24 h-24">
-                          <AvatarImage src="https://placehold.co/100x100.png" data-ai-hint="woman portrait" />
-                          <AvatarFallback>SL</AvatarFallback>
-                        </Avatar>
-                    </div>
-                     <div className="flex justify-center text-accent mb-4">
-                        <Star className="w-5 h-5 fill-current" />
-                        <Star className="w-5 h-5 fill-current" />
-                        <Star className="w-5 h-5 fill-current" />
-                        <Star className="w-5 h-5 fill-current" />
-                        <Star className="w-5 h-5 fill-current" />
-                      </div>
-                    <blockquote className="text-xl italic text-foreground/80 mb-6">
-                        "From the initial idea to the final installation, the team was professional, creative, and attentive to every detail. They transformed our kitchen into a space that's not only beautiful but perfectly functional for our family."
-                    </blockquote>
-                    <p className="font-bold font-headline text-lg">Melissa K.</p>
-                    <p className="text-sm text-muted-foreground">Homeowner, CA</p>
-                </div>
-            </div>
-        </section>
-
-        {/* Core Values Section */}
-        <section className="py-24 bg-secondary text-secondary-foreground">
-            <div className="container mx-auto px-4">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <p className="text-sm uppercase tracking-widest text-secondary-foreground/60 font-semibold">Our Ethos</p>
-                        <h2 className="text-3xl lg:text-4xl font-bold font-headline mt-2 mb-6">Our core values allow us to stay on track and innovate in design.</h2>
-                        <p className="text-secondary-foreground/80 mb-8 max-w-prose">
-                            We are committed to pushing the boundaries of design while holding true to principles of quality, sustainability, and client-centric service.
-                        </p>
-                         <div className="space-y-4">
-                            <div className="flex items-start gap-4">
-                                <Target className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
-                                <div>
-                                    <h3 className="font-semibold">Client-Centric</h3>
-                                    <p className="text-secondary-foreground/80">Your vision is our blueprint. We listen, adapt, and create spaces that are a true reflection of you.</p>
-                                </div>
-                            </div>
-                            <div className="flex items-start gap-4">
-                                <Handshake className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
-                                <div>
-                                    <h3 className="font-semibold">Integrity & Trust</h3>
-                                    <p className="text-secondary-foreground/80">We build lasting relationships through transparency, honesty, and a commitment to our promises.</p>
-                                </div>
-                            </div>
-                            <div className="flex items-start gap-4">
-                                <Sprout className="w-6 h-6 text-accent mt-1 flex-shrink-0" />
-                                <div>
-                                    <h3 className="font-semibold">Sustainable Practices</h3>
-                                    <p className="text-secondary-foreground/80">We prioritize eco-friendly materials and methods to create beautiful, responsible designs.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="relative w-full aspect-video rounded-xl overflow-hidden group">
-                        <Image src="https://placehold.co/600x400.png" layout="fill" objectFit="cover" alt="Kitchen design process" data-ai-hint="kitchen design" />
-                        <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                            <PlayCircle className="w-20 h-20 text-white/80 transform transition-transform group-hover:scale-110"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        {/* Work Progress Section */}
-        <section className="py-24">
-            <div className="container mx-auto px-4 text-center">
-                <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">How It Works</p>
-                <h2 className="text-3xl lg:text-4xl font-bold font-headline mt-2 mb-16">Our Work Progress</h2>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 relative">
-                    <div className="absolute top-1/3 left-0 w-full h-px bg-border -translate-y-4 hidden lg:block"></div>
-                    {workProgress.map((item, index) => (
-                        <div key={item.title} className="relative">
-                            <div className="relative inline-block mb-4">
-                                <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center">
-                                    <div className="w-12 h-12 rounded-full bg-accent/50 flex items-center justify-center">
-                                        <span className="text-sm font-bold text-accent-foreground">{item.step}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <h3 className="text-xl font-bold font-headline mb-2">{item.title}</h3>
-                            <p className="text-muted-foreground px-4">{item.description}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-
-        {/* CTA Section */}
-      <section className="w-full py-24">
-        <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
-          <div className="space-y-3">
-            <h2 className="text-3xl font-bold tracking-tight md:text-4xl/tight font-headline">Ready to Start Your Design Journey?</h2>
-            <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Let's collaborate to create a space that's uniquely yours. Contact us today for a consultation.
+      {/* CTA Section */}
+      <section className="w-full py-32 relative overflow-hidden">
+        <Image src="https://placehold.co/1600x800.png" alt="Comfortable modern sofa" data-ai-hint="modern sofa" layout="fill" objectFit="cover" className="-z-10"/>
+        <div className="absolute inset-0 bg-black/50 -z-10"></div>
+        <div className="container mx-auto px-4 grid items-center justify-center gap-4 text-center text-white">
+          <div className="space-y-4">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-headline">Upgrade Your Space with Timeless Furniture</h2>
+            <p className="mx-auto max-w-2xl text-white/80 md:text-xl">
+              Let's collaborate to create a space that's uniquely yours. Contact us today for a consultation and discover the perfect pieces for your home.
             </p>
           </div>
           <div className="mx-auto w-full max-w-sm space-y-2">
-             <Button asChild size="lg">
+             <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-black">
                 <Link href="/contact">Book a Consultation</Link>
               </Button>
           </div>
