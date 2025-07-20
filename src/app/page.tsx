@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -8,24 +9,6 @@ import { Star, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-
-const heroCollections = [
-    {
-        name: "Residential",
-        image: "https://placehold.co/150x100.png",
-        hint: "modern living room"
-    },
-    {
-        name: "Commercial",
-        image: "https://placehold.co/150x100.png",
-        hint: "luxury office"
-    },
-    {
-        name: "Hospitality",
-        image: "https://placehold.co/150x100.png",
-        hint: "hotel lobby"
-    }
-];
 
 const lovedPicks = [
     {
@@ -133,33 +116,6 @@ export default function HomePage() {
                         <Link href="/services">Our Services<ArrowRight className="w-4 h-4 ml-1"/></Link>
                     </Button>
                 </div>
-            </div>
-        </div>
-
-        <div className="absolute bottom-0 left-0 w-full z-10">
-            <div className="container mx-auto px-4 py-4">
-                <Carousel opts={{ align: "start", loop: true }} className="w-full max-w-lg">
-                    <CarouselContent>
-                        {heroCollections.map((item, index) => (
-                        <CarouselItem key={index} className="basis-1/3">
-                            <div className="aspect-[3/2] rounded-md overflow-hidden">
-                                <Image src={item.image} width={150} height={100} alt={item.name} data-ai-hint={item.hint} className="w-full h-full object-cover"/>
-                            </div>
-                        </CarouselItem>
-                        ))}
-                        <CarouselItem className="basis-2/3">
-                            <div className="text-white/90 h-full flex items-center">
-                                <p className="text-sm">Bespoke designs for residential, commercial, and hospitality spaces.</p>
-                            </div>
-                        </CarouselItem>
-                    </CarouselContent>
-                    <div className="flex items-center gap-4 mt-2">
-                        <p className="text-white font-semibold text-sm">Explore Our Portfolio</p>
-                        <div className="flex-grow h-px bg-white/20"></div>
-                        <CarouselPrevious className="bg-transparent border-white/50 text-white hover:bg-white/10 relative -left-0 -top-0 -translate-y-0 h-8 w-8" />
-                        <CarouselNext className="bg-transparent border-white/50 text-white hover:bg-white/10 relative -right-0 -top-0 -translate-y-0 h-8 w-8" />
-                    </div>
-                </Carousel>
             </div>
         </div>
       </section>
