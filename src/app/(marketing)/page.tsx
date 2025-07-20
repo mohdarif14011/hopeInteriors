@@ -87,7 +87,7 @@ const testimonials = [
 
 export default function HomePage() {
   return (
-    <div className="text-foreground">
+    <div className="bg-background text-foreground">
       {/* Hero Section */}
       <section className="w-full h-screen relative">
         <Image
