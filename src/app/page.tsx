@@ -102,19 +102,19 @@ const testimonials = [
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-dvh bg-background text-foreground pt-20">
+    <div className="flex flex-col min-h-dvh bg-background text-foreground">
       {/* Hero Section */}
-      <section className="w-full h-[calc(100vh-80px)] relative flex flex-col">
+      <section className="w-full h-screen relative flex flex-col pt-20">
         <Image
             src="https://placehold.co/1600x900.png"
             layout="fill"
             alt="A beautifully designed modern living room"
             data-ai-hint="modern living room interior"
-            className="w-full h-full object-cover -z-10"
+            className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/20 -z-10"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
         
-        <div className="container mx-auto px-4 flex-grow flex flex-col justify-center">
+        <div className="container mx-auto px-4 flex-grow flex flex-col justify-center z-10">
             <div className="max-w-xl text-left text-white space-y-6 bg-black/30 backdrop-blur-sm p-8 rounded-lg">
                 <h1 className="text-5xl lg:text-7xl font-bold font-headline tracking-tight">
                     Where Vision Meets Bespoke Interior Design
@@ -133,7 +133,7 @@ export default function HomePage() {
             </div>
         </div>
 
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 py-8 z-10">
             <Carousel opts={{ align: "start", loop: true }} className="w-full max-w-lg">
                 <CarouselContent>
                     {heroCollections.map((item, index) => (
