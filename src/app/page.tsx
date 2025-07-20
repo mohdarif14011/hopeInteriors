@@ -86,7 +86,7 @@ const testimonials = [
 
 export default function HomePage() {
   return (
-    <div className="bg-background text-foreground">
+    <div className=" text-foreground">
       {/* Hero Section */}
       <section className="w-full h-screen relative">
         <Image
@@ -94,7 +94,7 @@ export default function HomePage() {
           alt="Hero background image of a modern interior"
           fill
           priority
-          className="object-cover -z-10"
+          className="object-cover"
           data-ai-hint="modern interior design"
         />
         <div className="absolute inset-0 bg-black/30"></div>

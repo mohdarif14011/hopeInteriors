@@ -32,6 +32,8 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const headerTextColor = hasScrolled ? 'text-foreground' : 'text-white';
+
 
   return (
     <header className={cn(
@@ -43,7 +45,7 @@ export function Header() {
             {/* Mobile Menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-                <Button variant="ghost" className="p-0 text-base font-semibold uppercase">
+                <Button variant="ghost" className={cn("p-0 text-base font-semibold uppercase", headerTextColor)}>
                     MENU
                 </Button>
             </SheetTrigger>
@@ -87,23 +89,23 @@ export function Header() {
 
         <div className="flex justify-center">
             <Link href="/">
-                <DesignVerseLogo />
+                <DesignVerseLogo className={headerTextColor}/>
             </Link>
         </div>
         
-        <div className="flex items-center justify-end gap-2">
-            <Button variant="ghost" size="sm" className="hidden md:inline-flex">
+        <div className={cn("flex items-center justify-end gap-2", headerTextColor)}>
+            <Button variant="ghost" size="sm" className={cn("hidden md:inline-flex", headerTextColor)}>
                 CLIENTS (1)
             </Button>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className={headerTextColor}>
                 <ShoppingBag className="h-5 w-5" />
                 <span className="sr-only">Client Portal</span>
             </Button>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className={headerTextColor}>
                 <Heart className="h-5 w-5" />
                 <span className="sr-only">Favorites</span>
             </Button>
-             <Button variant="ghost" size="icon">
+             <Button variant="ghost" size="icon" className={headerTextColor}>
                 <Search className="h-5 w-5" />
                 <span className="sr-only">Search</span>
             </Button>

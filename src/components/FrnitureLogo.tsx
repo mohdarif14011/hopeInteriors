@@ -10,7 +10,7 @@ export function DesignVerseLogo({ className }: { className?: string }) {
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-foreground"
+        className="text-current"
       >
         <path
           d="M4 10C4 8.89543 4.89543 8 6 8H18C19.1046 8 20 8.89543 20 10V14H4V10Z"
