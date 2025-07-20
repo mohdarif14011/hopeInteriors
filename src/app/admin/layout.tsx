@@ -1,27 +1,11 @@
 
-'use server';
-
 import AuthGuard from '@/components/AuthGuard';
 import { DesignVerseLogo } from '@/components/FrnitureLogo';
 import { Button } from '@/components/ui/button';
-import { auth } from '@/lib/firebase';
-import { signOut } from 'firebase/auth';
 import { Home, LogOut, Package } from 'lucide-react';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import { handleSignOut } from './actions';
 
-const handleSignOut = async () => {
-    'use server';
-    // This signing out is happening on the server, but Firebase Auth state is on the client.
-    // A full page redirect will force the client to re-evaluate the auth state.
-    // For a smoother UX, this would typically be a client-side action.
-    try {
-        await signOut(auth);
-    } catch (error) {
-        console.error("Sign out error", error);
-    }
-    redirect('/login');
-}
 
 const navItems = [
     { href: '/admin', icon: Home, label: 'Dashboard' },
