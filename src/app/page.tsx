@@ -92,7 +92,8 @@ export default function HomePage() {
       <section className="w-full h-[calc(100vh-80px)] relative flex flex-col">
         <Image
             src="https://res.cloudinary.com/dbjx14ajj/image/upload/v1752990468/view-futuristic-lighting-lamp-design_imgdsm.jpg"
-            layout="fill"
+            fill
+            priority
             alt="Futuristic lighting lamp design"
             data-ai-hint="futuristic lamp"
             className="w-full h-full object-cover -z-10"
@@ -222,7 +223,7 @@ export default function HomePage() {
                 {roomCategories.map(category => (
                     <Link href="/portfolio" key={category.name}>
                         <div className="relative group overflow-hidden rounded-xl aspect-square">
-                            <Image src={category.image} layout="fill" objectFit="cover" alt={category.name} data-ai-hint={category.hint} />
+                            <Image src={category.image} fill objectFit="cover" alt={category.name} data-ai-hint={category.hint} />
                             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
                             <div className="absolute bottom-0 left-0 p-6 text-white">
                                 <h3 className="text-xl font-bold font-headline">{category.name}</h3>
@@ -283,7 +284,7 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="w-full py-32 relative overflow-hidden">
-        <Image src="https://placehold.co/1600x800.png" alt="A beautiful modern interior" data-ai-hint="modern interior" layout="fill" objectFit="cover" className="-z-10"/>
+        <Image src="https://placehold.co/1600x800.png" alt="A beautiful modern interior" data-ai-hint="modern interior" fill className="object-cover -z-10"/>
         <div className="absolute inset-0 bg-black/50 -z-10"></div>
         <div className="container mx-auto px-4 grid items-center justify-center gap-4 text-center text-white">
           <div className="space-y-4">
@@ -302,5 +303,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-    
