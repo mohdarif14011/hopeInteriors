@@ -1,4 +1,5 @@
 
+
 'use client';
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
@@ -30,7 +31,7 @@ export default function AIDesignerPage() {
     };
 
     return (
-        <div className="bg-background pt-20">
+        <div className="bg-background">
             <div className="container mx-auto px-4 py-12 md:py-24">
                 <div className="text-center mb-12">
                     <p className="text-sm uppercase text-muted-foreground tracking-widest font-semibold">AI-Powered Creativity</p>

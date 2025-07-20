@@ -19,7 +19,7 @@ const config = {
     extend: {
       fontFamily: {
         body: ['Inter', 'sans-serif'],
-        headline: ['Playfair Display', 'serif'],
+        headline: ['Space Grotesk', 'sans-serif'],
       },
       colors: {
         border: 'hsl(var(--border))',

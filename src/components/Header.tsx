@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -6,6 +7,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { DesignVerseLogo } from './FrnitureLogo';
+import { Button } from './ui/button';
+import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
+import { Menu } from 'lucide-react';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -27,8 +31,7 @@ export function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const headerTextColor = hasScrolled || pathname !== '/' ? 'text-foreground' : 'text-white';
+  
   const isHomePage = pathname === '/';
   const finalHeaderTextColor = isHomePage && !hasScrolled ? 'text-white' : 'text-foreground';
 
@@ -39,12 +42,10 @@ export function Header() {
         hasScrolled ? 'bg-background/80 backdrop-blur-sm shadow-sm' : 'bg-transparent',
     )}>
       <div className="container flex h-20 items-center justify-between">
-        <div className="flex items-center gap-4 justify-start">
-             <Link href="/">
-                <DesignVerseLogo className={finalHeaderTextColor}/>
-            </Link>
-        </div>
-
+        <Link href="/">
+            <DesignVerseLogo className={finalHeaderTextColor}/>
+        </Link>
+        
         <nav className="hidden md:flex items-center gap-6">
             {navLinks.map(({ href, label }) => (
                 <Link
@@ -59,6 +60,30 @@ export function Header() {
                 </Link>
             ))}
         </nav>
+
+         <Sheet>
+            <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden">
+                    <Menu className={cn("h-6 w-6", finalHeaderTextColor)}/>
+                </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+                <nav className="flex flex-col gap-6 text-lg font-medium mt-10">
+                     {navLinks.map(({ href, label }) => (
+                        <Link
+                            key={href}
+                            href={href}
+                            className={cn(
+                            "transition-colors hover:text-primary",
+                             pathname === href ? 'text-primary' : 'text-foreground'
+                            )}
+                        >
+                            {label}
+                        </Link>
+                    ))}
+                </nav>
+            </SheetContent>
+        </Sheet>
       </div>
     </header>
   );

@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export default function ContactPage() {
   return (
-    <div className="bg-background pt-20">
+    <div className="bg-background">
     <div className="container mx-auto px-4 py-12 md:py-24">
       <div className="text-center mb-12">
          <p className="text-sm uppercase text-muted-foreground tracking-widest font-semibold">Let's Connect</p>
