@@ -115,11 +115,11 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/20"></div>
         
         <div className="container mx-auto px-4 flex-grow flex flex-col justify-center z-10">
-            <div className="max-w-xl text-left text-white space-y-6 bg-black/30 backdrop-blur-sm p-8 rounded-lg">
-                <h1 className="text-5xl lg:text-7xl font-bold font-headline tracking-tight">
+            <div className="max-w-xl text-left text-white space-y-6">
+                <h1 className="text-5xl lg:text-7xl font-bold font-headline tracking-tight [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
                     Where Vision Meets Bespoke Interior Design
                 </h1>
-                <p className="text-lg text-white/90">
+                <p className="text-lg text-white/90 [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
                     We craft timeless, personalized interiors that tell your story. Experience the art of living through exceptional design.
                 </p>
                 <div className="flex items-center gap-6">
@@ -341,3 +341,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+    
