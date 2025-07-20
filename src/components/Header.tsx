@@ -32,17 +32,16 @@ export function Header() {
   }, []);
   
   const isHomePage = pathname === '/';
-  const headerTextColor = isHomePage && !hasScrolled ? 'text-white' : 'text-foreground';
-
+  const isTransparent = isHomePage && !hasScrolled;
 
   return (
     <header className={cn(
         "fixed top-0 z-50 w-full transition-all duration-300",
-        hasScrolled || !isHomePage ? 'bg-background/80 backdrop-blur-sm shadow-sm' : 'bg-transparent',
+        isTransparent ? 'bg-transparent' : 'bg-background/80 backdrop-blur-sm shadow-sm',
     )}>
       <div className="container flex h-20 items-center justify-between">
         <Link href="/">
-            <DesignVerseLogo className={headerTextColor}/>
+            <DesignVerseLogo className={cn(isTransparent ? 'text-white' : 'text-foreground')}/>
         </Link>
         
         <nav className="hidden md:flex items-center gap-6">
@@ -52,7 +51,7 @@ export function Header() {
                     href={href}
                     className={cn(
                     "font-medium text-sm transition-colors hover:text-primary",
-                    pathname === href ? 'text-primary' : headerTextColor
+                    pathname === href ? 'text-primary' : (isTransparent ? 'text-white' : 'text-foreground')
                     )}
                 >
                     {label}
@@ -63,7 +62,7 @@ export function Header() {
          <Sheet>
             <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">
-                    <Menu className={cn("h-6 w-6", headerTextColor)}/>
+                    <Menu className={cn("h-6 w-6", isTransparent ? 'text-white' : 'text-foreground')}/>
                 </Button>
             </SheetTrigger>
             <SheetContent side="right">

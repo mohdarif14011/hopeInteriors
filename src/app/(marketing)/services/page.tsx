@@ -25,7 +25,7 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="bg-background">
+    <div className="bg-background pt-20">
       <div className="container mx-auto px-4 py-12 md:py-24">
         <div className="text-center mb-12">
           <p className="text-sm uppercase text-muted-foreground tracking-widest font-headline">What We Do</p>
