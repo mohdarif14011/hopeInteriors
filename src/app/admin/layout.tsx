@@ -12,7 +12,14 @@ import { redirect } from 'next/navigation';
 
 const handleSignOut = async () => {
     'use server';
-    await signOut(auth);
+    // This signing out is happening on the server, but Firebase Auth state is on the client.
+    // A full page redirect will force the client to re-evaluate the auth state.
+    // For a smoother UX, this would typically be a client-side action.
+    try {
+        await signOut(auth);
+    } catch (error) {
+        console.error("Sign out error", error);
+    }
     redirect('/login');
 }
 
@@ -39,7 +46,7 @@ function AdminSidebar() {
             </nav>
             <div className="p-4 border-t">
                  <form action={handleSignOut}>
-                    <Button variant="ghost" className="w-full justify-start gap-2">
+                    <Button type="submit" variant="ghost" className="w-full justify-start gap-2">
                         <LogOut className="h-4 w-4" />
                         Sign Out
                     </Button>
