@@ -97,7 +97,7 @@ export default function HomePage() {
           className="object-cover"
           data-ai-hint="modern interior design"
         />
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/70 via-black/30 to-transparent"></div>
         <div className="container mx-auto px-4 h-full flex flex-col justify-center items-start text-white relative">
           <div className="max-w-xl text-left space-y-6">
             <h1 className="text-5xl lg:text-7xl font-bold font-headline tracking-tight [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
