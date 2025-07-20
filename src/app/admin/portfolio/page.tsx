@@ -1,3 +1,4 @@
+'use client';
 import Image from "next/image"
 import Link from "next/link"
 import { PlusCircle, MoreHorizontal } from "lucide-react"
@@ -26,33 +27,41 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { Skeleton } from "@/components/ui/skeleton";
 
-// This is placeholder data. In a real application, this would come from a database.
-const portfolioItems = [
-  {
-    category: "Living Room",
-    title: "Modern Minimalist Living Room",
-    image: "https://placehold.co/600x400.png",
-  },
-  {
-    category: "Bedroom",
-    title: "Cozy Scandinavian Bedroom",
-    image: "https://placehold.co/600x400.png",
-  },
-  {
-    category: "Kitchen",
-    title: "Industrial Chic Kitchen",
-    image: "https://placehold.co/600x400.png",
-  },
-  {
-    category: "Bathroom",
-    title: "Luxurious Bathroom Retreat",
-    image: "https://placehold.co/600x400.png",
-  },
-];
-
+interface PortfolioItem {
+    id: string;
+    title: string;
+    category: string;
+    imageUrl: string;
+}
 
 export default function AdminPortfolioPage() {
+    const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchPortfolioItems = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, "portfolio"));
+                const items: PortfolioItem[] = [];
+                querySnapshot.forEach((doc) => {
+                    items.push({ id: doc.id, ...doc.data() } as PortfolioItem);
+                });
+                setPortfolioItems(items);
+            } catch (error) {
+                console.error("Error fetching portfolio items: ", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchPortfolioItems();
+    }, []);
+
   return (
     <div>
         <div className="flex items-center">
@@ -88,47 +97,72 @@ export default function AdminPortfolioPage() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {portfolioItems.map((item, index) => (
-                        <TableRow key={index}>
-                            <TableCell className="hidden sm:table-cell">
-                                <Image
-                                    alt={item.title}
-                                    className="aspect-square rounded-md object-cover"
-                                    height="64"
-                                    src={item.image}
-                                    width="64"
-                                    data-ai-hint="portfolio image"
-                                />
-                            </TableCell>
-                            <TableCell className="font-medium">{item.title}</TableCell>
-                            <TableCell>{item.category}</TableCell>
-                            <TableCell>
-                                <DropdownMenu>
-                                    <DropdownMenuTrigger asChild>
-                                        <Button
-                                            aria-haspopup="true"
-                                            size="icon"
-                                            variant="ghost"
-                                        >
-                                            <MoreHorizontal className="h-4 w-4" />
-                                            <span className="sr-only">Toggle menu</span>
-                                        </Button>
-                                    </DropdownMenuTrigger>
-                                    <DropdownMenuContent align="end">
-                                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                        <DropdownMenuItem>Edit</DropdownMenuItem>
-                                        <DropdownMenuItem>Delete</DropdownMenuItem>
-                                    </DropdownMenuContent>
-                                </DropdownMenu>
-                            </TableCell>
-                        </TableRow>
-                        ))}
+                        {loading ? (
+                            Array.from({ length: 4 }).map((_, index) => (
+                                <TableRow key={index}>
+                                    <TableCell className="hidden sm:table-cell">
+                                        <Skeleton className="aspect-square rounded-md h-16 w-16" />
+                                    </TableCell>
+                                    <TableCell>
+                                        <Skeleton className="h-5 w-48" />
+                                    </TableCell>
+                                    <TableCell>
+                                        <Skeleton className="h-5 w-24" />
+                                    </TableCell>
+                                    <TableCell>
+                                        <div className="h-8 w-8" />
+                                    </TableCell>
+                                </TableRow>
+                            ))
+                        ) : portfolioItems.length > 0 ? (
+                            portfolioItems.map((item) => (
+                                <TableRow key={item.id}>
+                                    <TableCell className="hidden sm:table-cell">
+                                        <Image
+                                            alt={item.title}
+                                            className="aspect-square rounded-md object-cover"
+                                            height="64"
+                                            src={item.imageUrl || "https://placehold.co/64x64.png"}
+                                            width="64"
+                                            data-ai-hint="portfolio image"
+                                        />
+                                    </TableCell>
+                                    <TableCell className="font-medium">{item.title}</TableCell>
+                                    <TableCell>{item.category}</TableCell>
+                                    <TableCell>
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger asChild>
+                                                <Button
+                                                    aria-haspopup="true"
+                                                    size="icon"
+                                                    variant="ghost"
+                                                >
+                                                    <MoreHorizontal className="h-4 w-4" />
+                                                    <span className="sr-only">Toggle menu</span>
+                                                </Button>
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuContent align="end">
+                                                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                                                <DropdownMenuItem>Edit</DropdownMenuItem>
+                                                <DropdownMenuItem>Delete</DropdownMenuItem>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
+                                    </TableCell>
+                                </TableRow>
+                            ))
+                        ) : (
+                           <TableRow>
+                                <TableCell colSpan={4} className="text-center h-24">
+                                    No portfolio items found.
+                                </TableCell>
+                            </TableRow>
+                        )}
                     </TableBody>
                 </Table>
             </CardContent>
             <CardFooter>
                 <div className="text-xs text-muted-foreground">
-                    Showing <strong>1-{portfolioItems.length}</strong> of <strong>{portfolioItems.length}</strong> products
+                    Showing <strong>{portfolioItems.length}</strong> of <strong>{portfolioItems.length}</strong> projects
                 </div>
             </CardFooter>
         </Card>
