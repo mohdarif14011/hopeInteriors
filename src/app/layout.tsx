@@ -4,8 +4,8 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Frniture - Timeless Furniture for Every Space',
-  description: 'Discover timeless furniture for every space.',
+  title: 'DesignVerse - Crafting Exceptional Interiors',
+  description: 'DesignVerse is a full-service interior design firm dedicated to creating bespoke, timeless spaces that reflect your personality and lifestyle.',
 };
 
 export default function RootLayout({

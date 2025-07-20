@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from '@/components/ui/sheet';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { FrnitureLogo } from './FrnitureLogo';
+import { DesignVerseLogo } from './FrnitureLogo';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -56,7 +56,7 @@ export function Header() {
                 </SheetHeader>
                 <div className="flex flex-col h-full">
                     <div className="flex justify-between items-center p-4 border-b">
-                        <FrnitureLogo />
+                        <DesignVerseLogo />
                          <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
                             <X className="h-6 w-6" />
                             <span className="sr-only">Close menu</span>
@@ -87,21 +87,21 @@ export function Header() {
 
         <div className="flex justify-center">
             <Link href="/">
-                <FrnitureLogo />
+                <DesignVerseLogo />
             </Link>
         </div>
         
         <div className="flex items-center justify-end gap-2">
             <Button variant="ghost" size="sm" className="hidden md:inline-flex">
-                CART (1)
+                CLIENTS (1)
             </Button>
             <Button variant="ghost" size="icon">
                 <ShoppingBag className="h-5 w-5" />
-                <span className="sr-only">Cart</span>
+                <span className="sr-only">Client Portal</span>
             </Button>
             <Button variant="ghost" size="icon">
                 <Heart className="h-5 w-5" />
-                <span className="sr-only">Wishlist</span>
+                <span className="sr-only">Favorites</span>
             </Button>
              <Button variant="ghost" size="icon">
                 <Search className="h-5 w-5" />

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-export function FrnitureLogo({ className }: { className?: string }) {
+export function DesignVerseLogo({ className }: { className?: string }) {
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <svg
@@ -33,7 +33,7 @@ export function FrnitureLogo({ className }: { className?: string }) {
         />
       </svg>
       <span className="font-headline text-2xl font-bold tracking-wider">
-        FRNITURE
+        DESIGNVERSE
       </span>
     </div>
   );

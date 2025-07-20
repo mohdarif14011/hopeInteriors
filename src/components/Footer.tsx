@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Github, Twitter, Instagram } from 'lucide-react';
-import { FrnitureLogo } from './FrnitureLogo';
+import { DesignVerseLogo } from './FrnitureLogo';
 
 export function Footer() {
   return (
@@ -11,9 +11,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Column 1: About */}
             <div className="space-y-4 lg:col-span-2">
-                <FrnitureLogo/>
+                <DesignVerseLogo/>
                 <p className="text-sm text-muted-foreground max-w-md">
-                    We're a team of passionate designers and craftspeople dedicated to creating beautiful, functional furniture that brings joy to your home.
+                   DesignVerse is a premier interior design firm dedicated to creating beautiful, functional, and timeless spaces that reflect the unique personality of our clients.
                 </p>
                 <div className="flex space-x-4">
                     <Link href="#" className="text-muted-foreground hover:text-primary transition-colors"><Github className="w-5 h-5"/></Link>
@@ -37,15 +37,15 @@ export function Footer() {
              <div>
                 <h4 className="font-bold font-headline mb-4">Contact Us</h4>
                 <div className="text-sm space-y-2 text-muted-foreground">
-                    <p>123 Furniture Lane,<br/>Design District, DS 54321</p>
-                    <p>Email: contact@frniture.com</p>
+                    <p>123 Design Lane,<br/>Creative District, CD 54321</p>
+                    <p>Email: contact@designverse.com</p>
                     <p>Phone: (123) 456-7890</p>
                 </div>
             </div>
         </div>
 
         <div className="border-t mt-12 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} Frniture. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} DesignVerse. All rights reserved.</p>
         </div>
       </div>
     </footer>

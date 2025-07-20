@@ -44,9 +44,9 @@ export default function ContactPage() {
                           <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
-                          <SelectItem value="design">Furniture Consultation</SelectItem>
-                          <SelectItem value="delivery">Delivery & Assembly</SelectItem>
-                          <SelectItem value="custom">Custom Orders</SelectItem>
+                          <SelectItem value="design">Full-Service Design</SelectItem>
+                          <SelectItem value="construction">Construction & Renovation</SelectItem>
+                          <SelectItem value="consultation">AI Design Consultation</SelectItem>
                           <SelectItem value="general">General Inquiry</SelectItem>
                       </SelectContent>
                   </Select>
@@ -68,7 +68,7 @@ export default function ContactPage() {
                   <Mail className="w-6 h-6 text-primary mt-1"/>
                   <div>
                       <h3 className="font-semibold font-headline text-lg">Email</h3>
-                      <p className="text-muted-foreground">contact@frniture.com</p>
+                      <p className="text-muted-foreground">contact@designverse.com</p>
                   </div>
               </div>
               <div className="flex items-start gap-4">
@@ -81,8 +81,8 @@ export default function ContactPage() {
               <div className="flex items-start gap-4">
                   <MapPin className="w-6 h-6 text-primary mt-1"/>
                   <div>
-                      <h3 className="font-semibold font-headline text-lg">Office</h3>
-                      <p className="text-muted-foreground">123 Furniture Lane, Design District</p>
+                      <h3 className="font-semibold font-headline text-lg">Studio</h3>
+                      <p className="text-muted-foreground">123 Design Lane, Creative District</p>
                   </div>
               </div>
           </div>

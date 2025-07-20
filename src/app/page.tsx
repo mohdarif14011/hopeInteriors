@@ -9,92 +9,92 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 const heroCollections = [
     {
-        name: "Collection 1",
+        name: "Residential",
         image: "https://placehold.co/150x100.png",
-        hint: "living room"
+        hint: "modern living room"
     },
     {
-        name: "Collection 2",
+        name: "Commercial",
         image: "https://placehold.co/150x100.png",
-        hint: "bedroom furniture"
+        hint: "luxury office"
     },
     {
-        name: "Collection 3",
+        name: "Hospitality",
         image: "https://placehold.co/150x100.png",
-        hint: "dining set"
+        hint: "hotel lobby"
     }
 ];
 
 const lovedPicks = [
     {
-        sku: 'S123',
-        name: 'Modern Linen Sofa',
-        description: '3-seater, beige linen',
-        price: 999,
+        sku: 'P-001',
+        name: 'The Atherton Project',
+        description: 'Full-home luxury remodel',
+        price: 'View',
         image: 'https://placehold.co/400x400.png',
-        hint: 'modern sofa'
+        hint: 'luxury home interior'
     },
     {
-        sku: 'B789',
-        name: 'Tufted Velvet Bed',
-        description: 'Queen size, grey velvet',
-        price: 789,
+        sku: 'P-002',
+        name: 'The Bayfront Loft',
+        description: 'Modern open-concept living',
+        price: 'View',
         image: 'https://placehold.co/400x400.png',
-        hint: 'velvet bed'
+        hint: 'modern loft'
     },
     {
-        sku: 'T240',
-        name: 'Marble Coffee Table',
-        description: 'Round, black marble',
-        price: 645,
+        sku: 'P-003',
+        name: 'The Coastal Retreat',
+        description: 'Serene beachfront villa design',
+        price: 'View',
         image: 'https://placehold.co/400x400.png',
-        hint: 'marble table'
+        hint: 'beach house interior'
     },
 ];
 
 const roomCategories = [
     {
-        name: "Living Room Collection",
-        description: "Comfortable, elegant, stylish",
+        name: "Living Spaces",
+        description: "Elegant, functional, inviting",
         image: "https://placehold.co/600x600.png",
         hint: "modern living room"
     },
     {
-        name: "Bedroom Essentials",
-        description: "Cozy, tranquil, serene",
+        name: "Kitchen & Dining",
+        description: "Bespoke, refined, culinary",
         image: "https://placehold.co/600x600.png",
-        hint: "cozy bedroom"
+        hint: "modern kitchen"
     },
     {
-        name: "Dining Room Elegance",
-        description: "Modern, chic, functional",
+        name: "Bedrooms & Suites",
+        description: "Serene, personal, luxurious",
         image: "https://placehold.co/600x600.png",
-        hint: "dining room"
+        hint: "luxury bedroom"
     },
     {
-        name: "Home Decor & Accessories",
-        description: "Stylish, unique, personal",
+        name: "Outdoor Living",
+        description: "Seamless, stylish, relaxing",
         image: "https://placehold.co/600x600.png",
-        hint: 'home decor'
+        hint: 'outdoor patio'
     }
 ]
 
 const testimonials = [
   {
     name: "Emily Watson",
-    comment: "The team at Frniture was amazing. They helped me find the perfect pieces for my new apartment and the delivery was seamless. I couldn't be happier with the quality and style!",
+    comment: "Working with DesignVerse was a dream. They understood my vision perfectly and brought it to life with incredible attention to detail. My home now feels both luxurious and deeply personal.",
     avatar: "https://placehold.co/100x100.png",
     fallback: "EW",
   },
   {
     name: "John Smith",
-    comment: "I've been a loyal customer for years. The craftsmanship is consistently excellent, and their designs are always on-trend yet timeless. Highly recommend for anyone looking to invest in quality furniture.",
+    comment: "The professionalism and creativity of the DesignVerse team are unmatched. They transformed our outdated office into a modern, inspiring workspace that has boosted morale and productivity.",
     avatar: "https://placehold.co/100x100.png",
     fallback: "JS",
   },
   {
     name: "Sarah Miller",
-    comment: "From the initial idea to the final installation, the team was professional, creative, and attentive to every detail. They transformed our living room into a space that's not only beautiful but perfectly functional.",
+    comment: "From the initial concept to the final reveal, the entire process was seamless and enjoyable. Their expertise in material selection and space planning is truly exceptional. I couldn't be happier.",
     avatar: "https://placehold.co/100x100.png",
     fallback: "SM",
   },
@@ -108,8 +108,8 @@ export default function HomePage() {
         <Image
             src="https://placehold.co/1600x900.png"
             layout="fill"
-            alt="Modern dining room with stylish furniture"
-            data-ai-hint="modern dining room table"
+            alt="A beautifully designed modern living room"
+            data-ai-hint="modern living room interior"
             className="object-cover -z-10"
         />
         <div className="absolute inset-0 bg-black/20 -z-10"></div>
@@ -117,17 +117,17 @@ export default function HomePage() {
         <div className="container mx-auto px-4 flex-grow flex flex-col justify-center">
             <div className="max-w-xl text-left text-white space-y-6 bg-black/30 backdrop-blur-sm p-8 rounded-lg">
                 <h1 className="text-5xl lg:text-7xl font-bold font-headline tracking-tight">
-                Discover Timeless Furniture for Every Space
+                    Where Vision Meets Bespoke Interior Design
                 </h1>
                 <p className="text-lg text-white/90">
-                Transform your home with stylish, durable, and comfortable furniture designed to elevate your living experience.
+                    We craft timeless, personalized interiors that tell your story. Experience the art of living through exceptional design.
                 </p>
                 <div className="flex items-center gap-6">
                     <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-black group">
-                        <Link href="/contact">Shop Now <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"/></Link>
+                        <Link href="/portfolio">View Our Work<ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"/></Link>
                     </Button>
                     <Button asChild size="lg" variant="link" className="text-white hover:text-white/80 p-0">
-                        <Link href="/services">Explore Collections <ArrowRight className="w-4 h-4 ml-1"/></Link>
+                        <Link href="/services">Our Services<ArrowRight className="w-4 h-4 ml-1"/></Link>
                     </Button>
                 </div>
             </div>
@@ -145,12 +145,12 @@ export default function HomePage() {
                     ))}
                     <CarouselItem className="basis-2/3">
                         <div className="text-white/90 h-full flex items-center">
-                            <p>Transform your home with stylish, durable, and comfortable.</p>
+                            <p>Bespoke designs for residential, commercial, and hospitality spaces.</p>
                         </div>
                     </CarouselItem>
                 </CarouselContent>
                 <div className="flex items-center gap-4 mt-4">
-                     <p className="text-white font-semibold">See All</p>
+                     <p className="text-white font-semibold">Explore Our Portfolio</p>
                      <div className="flex-grow h-px bg-white/20"></div>
                      <CarouselPrevious className="bg-transparent border-white/50 text-white hover:bg-white/10 relative -left-0 -top-0 -translate-y-0" />
                      <CarouselNext className="bg-transparent border-white/50 text-white hover:bg-white/10 relative -right-0 -top-0 -translate-y-0" />
@@ -165,30 +165,30 @@ export default function HomePage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
                     <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">ABOUT US</p>
-                    <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-4 mb-6">Crafting Comfort, Defining Spaces</h2>
+                    <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-4 mb-6">Designing Spaces, Inspiring Lives</h2>
                     <p className="text-muted-foreground mb-8 max-w-prose">
-                        We believe that furniture should be more than just functional; it should be a reflection of your personality and a source of comfort and joy. Our mission is to provide you with high-quality, beautifully designed pieces that stand the test of time.
+                        At DesignVerse, we believe that a well-designed space has the power to transform your life. Our philosophy centers on creating environments that are not only beautiful but also deeply personal and functional. We blend artistry with a meticulous process to deliver exceptional interiors.
                     </p>
                      <div className="grid gap-6">
                         <div className="flex items-center gap-4">
                             <div className="bg-secondary p-3 rounded-full"><Star className="w-8 h-8 text-foreground" /></div>
                             <div>
-                                <p className="text-2xl font-bold">10,000+</p>
-                                <p className="text-muted-foreground">Items Collection</p>
+                                <p className="text-2xl font-bold">100+</p>
+                                <p className="text-muted-foreground">Completed Projects</p>
                             </div>
                         </div>
                          <div className="flex items-center gap-4">
                             <div className="bg-secondary p-3 rounded-full"><Star className="w-8 h-8 text-foreground" /></div>
                             <div>
-                                <p className="text-2xl font-bold">5,000+</p>
-                                <p className="text-muted-foreground">Happy customers & growing</p>
+                                <p className="text-2xl font-bold">15+</p>
+                                <p className="text-muted-foreground">Years of Experience</p>
                             </div>
                         </div>
                          <div className="flex items-center gap-4">
                             <div className="bg-secondary p-3 rounded-full"><Star className="w-8 h-8 text-foreground" /></div>
                             <div>
                                 <p className="text-2xl font-bold">4.9/5</p>
-                                <p className="text-muted-foreground">Based on all of our reviews</p>
+                                <p className="text-muted-foreground">Client Satisfaction Rating</p>
                             </div>
                         </div>
                     </div>
@@ -197,8 +197,8 @@ export default function HomePage() {
                     <Image
                         src="https://placehold.co/600x800.png"
                         fill
-                        alt="Stylish chair in a well-lit room"
-                        data-ai-hint="stylish chair room"
+                        alt="A designer sketching interior plans"
+                        data-ai-hint="interior designer sketching"
                         className="object-cover"
                     />
                 </div>
@@ -212,8 +212,8 @@ export default function HomePage() {
             <Carousel opts={{ align: "start", loop: true }}>
             <div className="flex justify-between items-end mb-12">
                 <div>
-                    <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Collection</p>
-                    <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-2">Our Most-Loved Picks</h2>
+                    <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Our Portfolio</p>
+                    <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-2">Signature Projects</h2>
                 </div>
                 <div className="hidden md:flex gap-2">
                   <CarouselPrevious />
@@ -226,7 +226,7 @@ export default function HomePage() {
                     <Card className="overflow-hidden border-none shadow-none bg-transparent">
                       <CardContent className="p-0">
                         <div className="bg-background rounded-lg p-4 aspect-square relative group mb-4">
-                            <Image src={item.image} width={400} height={400} alt={item.name} data-ai-hint={item.hint} className="w-full h-full object-contain"/>
+                            <Image src={item.image} width={400} height={400} alt={item.name} data-ai-hint={item.hint} className="w-full h-full object-cover"/>
                         </div>
                         <div className="flex justify-between items-start">
                             <div>
@@ -234,7 +234,7 @@ export default function HomePage() {
                                 <h3 className="text-lg font-semibold font-headline">{item.name}</h3>
                                 <p className="text-sm text-muted-foreground">{item.description}</p>
                             </div>
-                            <p className="text-lg font-bold">${item.price}</p>
+                             <Link href="/portfolio" className="text-lg font-bold">${item.price}</Link>
                         </div>
                       </CardContent>
                     </Card>
@@ -250,11 +250,11 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
             <div className="flex justify-between items-end mb-12">
                 <div>
-                    <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Our Categories</p>
-                    <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-2">Find the Perfect Piece for Every Room</h2>
+                    <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Design Focus</p>
+                    <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-2">Designing for Every Aspect of Life</h2>
                 </div>
                 <p className="text-muted-foreground max-w-md hidden lg:block">
-                    Explore our curated collections for every corner of your home, designed to bring harmony, comfort, and style to your life.
+                    Our expertise spans across a diverse range of spaces, each designed with a unique purpose and a commitment to quality.
                 </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -282,7 +282,7 @@ export default function HomePage() {
                 <div className="flex justify-between items-end mb-12">
                     <div>
                         <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Testimonials</p>
-                        <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-2">Hear from Our Happy Customers</h2>
+                        <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-2">What Our Clients Say</h2>
                     </div>
                     <div className="hidden md:flex items-center gap-2">
                         <CarouselPrevious className="relative -left-0 -top-0 -translate-y-0" />
@@ -322,13 +322,13 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="w-full py-32 relative overflow-hidden">
-        <Image src="https://placehold.co/1600x800.png" alt="Comfortable modern sofa" data-ai-hint="modern sofa" layout="fill" objectFit="cover" className="-z-10"/>
+        <Image src="https://placehold.co/1600x800.png" alt="A beautiful modern interior" data-ai-hint="modern interior" layout="fill" objectFit="cover" className="-z-10"/>
         <div className="absolute inset-0 bg-black/50 -z-10"></div>
         <div className="container mx-auto px-4 grid items-center justify-center gap-4 text-center text-white">
           <div className="space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-headline">Upgrade Your Space with Timeless Furniture</h2>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-headline">Let's Create Your Dream Space</h2>
             <p className="mx-auto max-w-2xl text-white/80 md:text-xl">
-              Let's collaborate to create a space that's uniquely yours. Contact us today for a consultation and discover the perfect pieces for your home.
+              Ready to transform your home or business? Contact us today for a consultation and let's begin the journey of creating a space that is uniquely yours.
             </p>
           </div>
           <div className="mx-auto w-full max-w-sm space-y-2">
