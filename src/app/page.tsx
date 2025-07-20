@@ -1,4 +1,6 @@
 
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -103,8 +105,9 @@ const testimonials = [
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-dvh bg-background text-foreground">
+      <div className="pt-20">
       {/* Hero Section */}
-      <section className="w-full h-screen relative flex flex-col pt-20">
+      <section className="w-full h-[calc(100vh-80px)] relative flex flex-col">
         <Image
             src="https://placehold.co/1600x900.png"
             layout="fill"
@@ -133,31 +136,34 @@ export default function HomePage() {
             </div>
         </div>
 
-        <div className="container mx-auto px-4 py-8 z-10">
-            <Carousel opts={{ align: "start", loop: true }} className="w-full max-w-lg">
-                <CarouselContent>
-                    {heroCollections.map((item, index) => (
-                    <CarouselItem key={index} className="basis-1/3">
-                         <div className="aspect-[3/2] rounded-md overflow-hidden">
-                            <Image src={item.image} width={150} height={100} alt={item.name} data-ai-hint={item.hint} className="w-full h-full object-cover"/>
-                        </div>
-                    </CarouselItem>
-                    ))}
-                    <CarouselItem className="basis-2/3">
-                        <div className="text-white/90 h-full flex items-center">
-                            <p>Bespoke designs for residential, commercial, and hospitality spaces.</p>
-                        </div>
-                    </CarouselItem>
-                </CarouselContent>
-                <div className="flex items-center gap-4 mt-4">
-                     <p className="text-white font-semibold">Explore Our Portfolio</p>
-                     <div className="flex-grow h-px bg-white/20"></div>
-                     <CarouselPrevious className="bg-transparent border-white/50 text-white hover:bg-white/10 relative -left-0 -top-0 -translate-y-0" />
-                     <CarouselNext className="bg-transparent border-white/50 text-white hover:bg-white/10 relative -right-0 -top-0 -translate-y-0" />
-                </div>
-            </Carousel>
+        <div className="absolute bottom-0 left-0 w-full z-10">
+            <div className="container mx-auto px-4 py-4">
+                <Carousel opts={{ align: "start", loop: true }} className="w-full max-w-lg">
+                    <CarouselContent>
+                        {heroCollections.map((item, index) => (
+                        <CarouselItem key={index} className="basis-1/3">
+                            <div className="aspect-[3/2] rounded-md overflow-hidden">
+                                <Image src={item.image} width={150} height={100} alt={item.name} data-ai-hint={item.hint} className="w-full h-full object-cover"/>
+                            </div>
+                        </CarouselItem>
+                        ))}
+                        <CarouselItem className="basis-2/3">
+                            <div className="text-white/90 h-full flex items-center">
+                                <p className="text-sm">Bespoke designs for residential, commercial, and hospitality spaces.</p>
+                            </div>
+                        </CarouselItem>
+                    </CarouselContent>
+                    <div className="flex items-center gap-4 mt-2">
+                        <p className="text-white font-semibold text-sm">Explore Our Portfolio</p>
+                        <div className="flex-grow h-px bg-white/20"></div>
+                        <CarouselPrevious className="bg-transparent border-white/50 text-white hover:bg-white/10 relative -left-0 -top-0 -translate-y-0 h-8 w-8" />
+                        <CarouselNext className="bg-transparent border-white/50 text-white hover:bg-white/10 relative -right-0 -top-0 -translate-y-0 h-8 w-8" />
+                    </div>
+                </Carousel>
+            </div>
         </div>
       </section>
+      </div>
 
       {/* Crafting Comfort Section */}
       <section className="py-24">
