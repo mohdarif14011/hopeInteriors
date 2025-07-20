@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { ToastViewport as Toaster } from "@/components/ui/toast"
+import { ToastProvider, ToastViewport as Toaster } from "@/components/ui/toast"
 
 export const metadata: Metadata = {
   title: 'DesignVerse - Crafting Exceptional Interiors',
@@ -20,8 +20,10 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        {children}
-        <Toaster />
+        <ToastProvider>
+          {children}
+          <Toaster />
+        </ToastProvider>
       </body>
     </html>
   );
