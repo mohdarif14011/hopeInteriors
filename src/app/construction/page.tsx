@@ -1,6 +1,9 @@
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
 import Image from "next/image";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 const services = [
     {
@@ -31,6 +34,8 @@ const services = [
 
 export default function ConstructionPage() {
   return (
+    <>
+    <Header/>
     <div className="bg-background pt-20">
       <div className="container mx-auto px-4 py-12 md:py-24">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -59,5 +64,7 @@ export default function ConstructionPage() {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 }

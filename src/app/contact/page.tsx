@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,9 +7,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Image from "next/image";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 export default function ContactPage() {
   return (
+    <>
+    <Header/>
     <div className="bg-background pt-20">
     <div className="container mx-auto px-4 py-12 md:py-24">
       <div className="text-center mb-12">
@@ -90,5 +95,7 @@ export default function ContactPage() {
       </div>
     </div>
     </div>
+    <Footer/>
+    </>
   );
 }

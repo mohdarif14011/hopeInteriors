@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { ToastProvider, ToastViewport as Toaster } from "@/components/ui/toast"
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
+import { ToastProvider, ToastViewport } from "@/components/ui/toast"
+import { AuthProvider } from '@/hooks/use-auth';
 
 export const metadata: Metadata = {
   title: 'DesignVerse - Crafting Exceptional Interiors',
@@ -23,10 +22,10 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased">
         <ToastProvider>
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-          <Toaster />
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+          <ToastViewport />
         </ToastProvider>
       </body>
     </html>

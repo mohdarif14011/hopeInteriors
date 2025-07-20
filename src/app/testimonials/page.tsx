@@ -1,6 +1,9 @@
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 const testimonials = [
   {
@@ -71,6 +74,8 @@ const renderStars = (rating: number) => {
 
 export default function TestimonialsPage() {
   return (
+    <>
+    <Header />
     <div className="bg-background pt-20">
     <div className="container mx-auto px-4 py-12 md:py-24">
       <div className="text-center mb-12">
@@ -106,5 +111,7 @@ export default function TestimonialsPage() {
       </div>
     </div>
     </div>
+    <Footer/>
+    </>
   );
 }
