@@ -223,7 +223,7 @@ export default function HomePage() {
                 {roomCategories.map(category => (
                     <Link href="/portfolio" key={category.name}>
                         <div className="relative group overflow-hidden rounded-xl aspect-square">
-                            <Image src={category.image} fill objectFit="cover" alt={category.name} data-ai-hint={category.hint} />
+                            <Image src={category.image} fill alt={category.name} data-ai-hint={category.hint} className="object-cover" />
                             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
                             <div className="absolute bottom-0 left-0 p-6 text-white">
                                 <h3 className="text-xl font-bold font-headline">{category.name}</h3>
@@ -303,3 +303,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+    
