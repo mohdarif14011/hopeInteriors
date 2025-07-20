@@ -110,7 +110,7 @@ export default function HomePage() {
             layout="fill"
             alt="A beautifully designed modern living room"
             data-ai-hint="modern living room interior"
-            className="object-cover -z-10"
+            className="w-full h-full object-cover -z-10"
         />
         <div className="absolute inset-0 bg-black/20 -z-10"></div>
         
