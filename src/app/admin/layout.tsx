@@ -1,4 +1,6 @@
 
+'use server';
+
 import AuthGuard from '@/components/AuthGuard';
 import { DesignVerseLogo } from '@/components/FrnitureLogo';
 import { Button } from '@/components/ui/button';
@@ -6,10 +8,12 @@ import { auth } from '@/lib/firebase';
 import { signOut } from 'firebase/auth';
 import { Home, LogOut, Package } from 'lucide-react';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 const handleSignOut = async () => {
     'use server';
     await signOut(auth);
+    redirect('/login');
 }
 
 const navItems = [
@@ -21,7 +25,7 @@ function AdminSidebar() {
     return (
         <div className="flex h-full min-h-screen w-64 flex-col bg-secondary text-secondary-foreground">
             <div className="p-4 border-b">
-                <DesignVerseLogo />
+                <Link href="/"><DesignVerseLogo /></Link>
             </div>
             <nav className="flex-1 space-y-2 p-4">
                  {navItems.map((item) => (
