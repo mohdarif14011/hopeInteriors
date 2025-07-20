@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -33,17 +32,17 @@ export function Header() {
   }, []);
   
   const isHomePage = pathname === '/';
-  const finalHeaderTextColor = isHomePage && !hasScrolled ? 'text-white' : 'text-foreground';
+  const headerTextColor = isHomePage && !hasScrolled ? 'text-white' : 'text-foreground';
 
 
   return (
     <header className={cn(
         "fixed top-0 z-50 w-full transition-all duration-300",
-        hasScrolled ? 'bg-background/80 backdrop-blur-sm shadow-sm' : 'bg-transparent',
+        hasScrolled || !isHomePage ? 'bg-background/80 backdrop-blur-sm shadow-sm' : 'bg-transparent',
     )}>
       <div className="container flex h-20 items-center justify-between">
         <Link href="/">
-            <DesignVerseLogo className={finalHeaderTextColor}/>
+            <DesignVerseLogo className={headerTextColor}/>
         </Link>
         
         <nav className="hidden md:flex items-center gap-6">
@@ -53,7 +52,7 @@ export function Header() {
                     href={href}
                     className={cn(
                     "font-medium text-sm transition-colors hover:text-primary",
-                    pathname === href ? 'text-primary' : finalHeaderTextColor
+                    pathname === href ? 'text-primary' : headerTextColor
                     )}
                 >
                     {label}
@@ -64,7 +63,7 @@ export function Header() {
          <Sheet>
             <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">
-                    <Menu className={cn("h-6 w-6", finalHeaderTextColor)}/>
+                    <Menu className={cn("h-6 w-6", headerTextColor)}/>
                 </Button>
             </SheetTrigger>
             <SheetContent side="right">
