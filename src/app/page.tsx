@@ -87,39 +87,36 @@ const testimonials = [
 export default function HomePage() {
   return (
     <div className="flex flex-col min-h-dvh bg-background text-foreground">
-      <div className="pt-20">
       {/* Hero Section */}
-      <section className="w-full h-[calc(100vh-80px)] relative flex flex-col">
+      <section className="w-full h-screen relative">
         <Image
-            src="https://res.cloudinary.com/dbjx14ajj/image/upload/v1752990468/view-futuristic-lighting-lamp-design_imgdsm.jpg"
-            fill
-            priority
-            alt="Futuristic lighting lamp design"
-            data-ai-hint="futuristic lamp"
-            className="w-full h-full object-cover -z-10"
+          src="https://res.cloudinary.com/dbjx14ajj/image/upload/v1752990468/view-futuristic-lighting-lamp-design_imgdsm.jpg"
+          alt="Hero background image of a modern interior"
+          fill
+          priority
+          className="object-cover -z-10"
+          data-ai-hint="modern interior design"
         />
-        <div className="absolute inset-0 bg-black/20"></div>
-        
-        <div className="container mx-auto px-4 flex-grow flex flex-col justify-center z-10">
-            <div className="max-w-xl text-left text-white space-y-6">
-                <h1 className="text-5xl lg:text-7xl font-bold font-headline tracking-tight [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
-                    Where Vision Meets Bespoke Interior Design
-                </h1>
-                <p className="text-lg text-white/90 [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
-                    We craft timeless, personalized interiors that tell your story. Experience the art of living through exceptional design.
-                </p>
-                <div className="flex items-center gap-6">
-                    <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-black group">
-                        <Link href="/portfolio">View Our Work<ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"/></Link>
-                    </Button>
-                    <Button asChild size="lg" variant="link" className="text-white hover:text-white/80 p-0">
-                        <Link href="/services">Our Services<ArrowRight className="w-4 h-4 ml-1"/></Link>
-                    </Button>
-                </div>
+        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="container mx-auto px-4 h-full flex flex-col justify-center items-start text-white relative">
+          <div className="max-w-xl text-left space-y-6 pt-20">
+            <h1 className="text-5xl lg:text-7xl font-bold font-headline tracking-tight [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+              Where Vision Meets Bespoke Interior Design
+            </h1>
+            <p className="text-lg text-white/90 [text-shadow:0_1px_2px_rgba(0,0,0,0.5)]">
+              We craft timeless, personalized interiors that tell your story. Experience the art of living through exceptional design.
+            </p>
+            <div className="flex items-center gap-6">
+              <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-black group">
+                <Link href="/portfolio">View Our Work<ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"/></Link>
+              </Button>
+              <Button asChild size="lg" variant="link" className="text-white hover:text-white/80 p-0">
+                <Link href="/services">Our Services<ArrowRight className="w-4 h-4 ml-1"/></Link>
+              </Button>
             </div>
+          </div>
         </div>
       </section>
-      </div>
 
       {/* Crafting Comfort Section */}
       <section className="py-24">
@@ -196,7 +193,7 @@ export default function HomePage() {
                                 <h3 className="text-lg font-semibold font-headline">{item.name}</h3>
                                 <p className="text-sm text-muted-foreground">{item.description}</p>
                             </div>
-                             <Link href="/portfolio" className="text-lg font-bold">${item.price}</Link>
+                             <Link href="/portfolio" className="text-lg font-bold">View</Link>
                         </div>
                       </CardContent>
                     </Card>
@@ -303,5 +300,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-    
