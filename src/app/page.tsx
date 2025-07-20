@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -92,11 +91,11 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="w-full h-[calc(100vh-80px)] relative flex flex-col">
         <Image
-            src="https://placehold.co/1600x900.png"
+            src="https://res.cloudinary.com/dbjx14ajj/image/upload/v1752990468/view-futuristic-lighting-lamp-design_imgdsm.jpg"
             layout="fill"
-            alt="A beautifully designed modern living room"
-            data-ai-hint="modern living room interior"
-            className="w-full h-full object-cover"
+            alt="Futuristic lighting lamp design"
+            data-ai-hint="futuristic lamp"
+            className="w-full h-full object-cover -z-10"
         />
         <div className="absolute inset-0 bg-black/20"></div>
         
@@ -303,5 +302,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-    
