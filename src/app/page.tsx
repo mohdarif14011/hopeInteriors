@@ -127,7 +127,7 @@ export default function HomePage() {
         <section className="py-24">
           <div className="container mx-auto px-4">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
-                  <div>
+                  <div className="lg:pr-12">
                       <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">ABOUT US</p>
                       <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-4 mb-6">Designing Spaces, Inspiring Lives</h2>
                       <p className="text-muted-foreground mb-8 max-w-prose">
@@ -157,13 +157,13 @@ export default function HomePage() {
                           </div>
                       </div>
                   </div>
-                   <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden">
+                   <div className="relative w-full aspect-square max-w-md mx-auto">
                       <Image
-                          src="https://placehold.co/600x800.png"
+                          src="https://placehold.co/600x600.png"
                           fill
                           alt="A designer sketching interior plans"
                           data-ai-hint="interior designer sketching"
-                          className="object-cover"
+                          className="object-cover rounded-xl"
                       />
                   </div>
               </div>
