@@ -1,64 +1,15 @@
-
-'use client';
-
-import { useEffect, useState } from 'react';
 import { getPortfolioItem, Project } from '@/services/portfolio';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Skeleton } from '@/components/ui/skeleton';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 
-export default function ProjectDetailPage({ params: { id } }: { params: { id: string } }) {
-  const [project, setProject] = useState<Project | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (id) {
-      const fetchProject = async () => {
-        try {
-          setLoading(true);
-          const item = await getPortfolioItem(id);
-          if (!item) {
-            notFound();
-          }
-          setProject(item);
-        } catch (err) {
-          setError('Failed to load project details.');
-          console.error(err);
-        } finally {
-          setLoading(false);
-        }
-      };
-      fetchProject();
-    }
-  }, [id]);
-
-  if (loading) {
-    return (
-        <>
-            <Header/>
-            <div className="container mx-auto px-4 py-12 md:py-24 pt-32">
-                 <Skeleton className="h-10 w-3/4 mb-4" />
-                 <Skeleton className="h-6 w-1/2 mb-8" />
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <Skeleton className="aspect-video w-full" />
-                    <Skeleton className="aspect-video w-full" />
-                 </div>
-            </div>
-            <Footer/>
-        </>
-    );
-  }
-
-  if (error) {
-    return <div className="text-center py-20">{error}</div>;
-  }
+export default async function ProjectDetailPage({ params: { id } }: { params: { id: string } }) {
+  const project: Project | null = await getPortfolioItem(id);
 
   if (!project) {
-    return null; 
+    notFound();
   }
 
   const allImages = [project.coverImageUrl, ...project.imageUrls];
