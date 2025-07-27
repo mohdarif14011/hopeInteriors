@@ -42,6 +42,9 @@ export default function ConsultingPage() {
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl">
                 Whether you need a second opinion or comprehensive project guidance, our consulting services provide the expertise and insight you need to make your project a success. We're here to answer your questions and help you navigate the complexities of design and construction.
             </p>
+             <Button asChild className="mt-8" size="lg">
+                <Link href="/contact">Book a Consultation</Link>
+            </Button>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
