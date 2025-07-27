@@ -13,7 +13,6 @@ import { useEffect, useState } from 'react';
 import { getPortfolioItems, Project } from '@/services/portfolio';
 import { getTestimonials, Testimonial } from '@/services/testimonials';
 import { Skeleton } from '@/components/ui/skeleton';
-import { AiDesignIdeas } from '@/components/AiDesignIdeas';
 
 const roomCategories = [
     {
@@ -90,7 +89,7 @@ export default function HomePage() {
             className="object-cover"
             data-ai-hint="modern interior design"
           />
-          <div className="absolute inset-0 bg-gradient-to-tr from-black/70 via-black/30 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent"></div>
           <div className="container mx-auto px-4 h-full flex flex-col justify-end items-start text-white relative">
             <div className="max-w-xl text-left space-y-6 pb-5">
               <h1 className="text-5xl lg:text-7xl font-bold font-headline tracking-tight [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
@@ -285,9 +284,6 @@ export default function HomePage() {
               </Carousel>
             </div>
         </section>
-
-        {/* AI Design Ideas Section */}
-        <AiDesignIdeas />
 
          {/* Let's Create Your Dream Space Section */}
         <section className="py-24 bg-gray-900 text-white">
