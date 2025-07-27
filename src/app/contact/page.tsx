@@ -75,108 +75,105 @@ export default function ContactPage() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
-        <div className="md:col-span-2">
-            <Card className="p-4 md:p-8 border-none bg-secondary">
-              <CardHeader>
-                <CardTitle className="font-headline text-2xl">Send a Message</CardTitle>
-                <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                     <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Full Name</FormLabel>
-                            <FormControl>
-                              <Input placeholder="John Doe" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Email Address</FormLabel>
-                            <FormControl>
-                              <Input type="email" placeholder="john.doe@example.com" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                  </div>
-                  <FormField
-                    control={form.control}
-                    name="service"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>I'm interested in...</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+      <div className="mx-auto max-w-3xl">
+          <Card className="p-4 md:p-8 border-none bg-secondary">
+            <CardHeader>
+              <CardTitle className="font-headline text-2xl">Send a Message</CardTitle>
+              <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                   <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Full Name</FormLabel>
                           <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select a service" />
-                            </SelectTrigger>
+                            <Input placeholder="John Doe" {...field} />
                           </FormControl>
-                          <SelectContent>
-                              <SelectItem value="design">Interior Designing</SelectItem>
-                              <SelectItem value="construction">Construction</SelectItem>
-                              <SelectItem value="consultation">Consulting</SelectItem>
-                              <SelectItem value="general">General Inquiry</SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Message</FormLabel>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email Address</FormLabel>
+                          <FormControl>
+                            <Input type="email" placeholder="john.doe@example.com" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                </div>
+                <FormField
+                  control={form.control}
+                  name="service"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>I'm interested in...</FormLabel>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
-                            <Textarea placeholder="Please describe your project or question." rows={5} {...field} />
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a service" />
+                          </SelectTrigger>
                         </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button type="submit" className="w-full" disabled={loading}>
-                    {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                    Send Message
-                  </Button>
-                </form>
-                </Form>
-              </CardContent>
-            </Card>
-        </div>
-        <div className="space-y-8">
-            <div className="space-y-6 text-left p-6 rounded-xl bg-secondary">
-              <div className="flex items-start gap-4">
-                  <Mail className="w-6 h-6 text-primary mt-1"/>
-                  <div>
-                      <h3 className="font-semibold font-headline text-lg">Email</h3>
-                      <p className="text-muted-foreground">15saifbtceng092@gmail.com</p>
-                  </div>
-              </div>
-              <div className="flex items-start gap-4">
-                  <Phone className="w-6 h-6 text-primary mt-1"/>
-                  <div>
-                      <h3 className="font-semibold font-headline text-lg">Phone</h3>
-                      <p className="text-muted-foreground">9026825095</p>
-                      <p className="text-muted-foreground">9598466676</p>
-                  </div>
-              </div>
+                        <SelectContent>
+                            <SelectItem value="design">Interior Designing</SelectItem>
+                            <SelectItem value="construction">Construction</SelectItem>
+                            <SelectItem value="consultation">Consulting</SelectItem>
+                            <SelectItem value="general">General Inquiry</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Message</FormLabel>
+                      <FormControl>
+                          <Textarea placeholder="Please describe your project or question." rows={5} {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  Send Message
+                </Button>
+              </form>
+              </Form>
+            </CardContent>
+          </Card>
+
+          <div className="mt-12 space-y-6 text-left p-6 rounded-xl bg-secondary">
+            <div className="flex items-start gap-4">
+                <Mail className="w-6 h-6 text-primary mt-1"/>
+                <div>
+                    <h3 className="font-semibold font-headline text-lg">Email</h3>
+                    <p className="text-muted-foreground">15saifbtceng092@gmail.com</p>
+                </div>
+            </div>
+            <div className="flex items-start gap-4">
+                <Phone className="w-6 h-6 text-primary mt-1"/>
+                <div>
+                    <h3 className="font-semibold font-headline text-lg">Phone</h3>
+                    <p className="text-muted-foreground">9026825095</p>
+                    <p className="text-muted-foreground">9598466676</p>
+                </div>
+            </div>
           </div>
-        </div>
       </div>
     </div>
     </div>
