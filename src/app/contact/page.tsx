@@ -73,21 +73,15 @@ export default function ContactPage() {
                   <Mail className="w-6 h-6 text-primary mt-1"/>
                   <div>
                       <h3 className="font-semibold font-headline text-lg">Email</h3>
-                      <p className="text-muted-foreground">contact@designverse.com</p>
+                      <p className="text-muted-foreground">15saifbtceng092@gmail.com</p>
                   </div>
               </div>
               <div className="flex items-start gap-4">
                   <Phone className="w-6 h-6 text-primary mt-1"/>
                   <div>
                       <h3 className="font-semibold font-headline text-lg">Phone</h3>
-                      <p className="text-muted-foreground">(123) 456-7890</p>
-                  </div>
-              </div>
-              <div className="flex items-start gap-4">
-                  <MapPin className="w-6 h-6 text-primary mt-1"/>
-                  <div>
-                      <h3 className="font-semibold font-headline text-lg">Studio</h3>
-                      <p className="text-muted-foreground">123 Design Lane, Creative District</p>
+                      <p className="text-muted-foreground">9026825095</p>
+                      <p className="text-muted-foreground">9598466676</p>
                   </div>
               </div>
           </div>

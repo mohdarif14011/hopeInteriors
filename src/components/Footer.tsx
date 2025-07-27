@@ -37,9 +37,9 @@ export function Footer() {
              <div>
                 <h4 className="font-bold font-headline mb-4">Contact Us</h4>
                 <div className="text-sm space-y-2 text-muted-foreground">
-                    <p>123 Design Lane,<br/>Creative District, CD 54321</p>
-                    <p>Email: contact@designverse.com</p>
-                    <p>Phone: (123) 456-7890</p>
+                    <p>Email: 15saifbtceng092@gmail.com</p>
+                    <p>Phone: 9026825095</p>
+                    <p>Phone: 9598466676</p>
                 </div>
             </div>
         </div>
