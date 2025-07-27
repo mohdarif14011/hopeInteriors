@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { Github, Twitter, Instagram } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import { DesignVerseLogo } from './FrnitureLogo';
 
 export function Footer() {
@@ -16,9 +16,7 @@ export function Footer() {
                    DesignVerse is a premier interior design firm dedicated to creating beautiful, functional, and timeless spaces that reflect the unique personality of our clients.
                 </p>
                 <div className="flex space-x-4">
-                    <Link href="#" className="text-muted-foreground hover:text-primary transition-colors"><Github className="w-5 h-5"/></Link>
-                    <Link href="#" className="text-muted-foreground hover:text-primary transition-colors"><Twitter className="w-5 h-5"/></Link>
-                    <Link href="#" className="text-muted-foreground hover:text-primary transition-colors"><Instagram className="w-5 h-5"/></Link>
+                    <Link href="https://www.instagram.com/_hope_interior_?igsh=MW03MTRlNzV6eXk0dA==" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors"><Instagram className="w-5 h-5"/></Link>
                 </div>
             </div>
 

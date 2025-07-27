@@ -111,7 +111,7 @@ export default function HomePage() {
         </section>
 
         {/* Crafting Comfort Section */}
-        <section className="py-24">
+        <section className="py-14">
           <div className="container mx-auto px-4">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div className="lg:pr-12">
@@ -159,7 +159,7 @@ export default function HomePage() {
         </section>
         
         {/* Most-Loved Picks Section */}
-        <section className="bg-secondary py-24">
+        <section className="bg-secondary py-14">
           <div className="container mx-auto px-4">
               <Carousel opts={{ align: "start", loop: projects.length > 2 }}>
               <div className="flex justify-between items-end mb-12">
@@ -204,7 +204,7 @@ export default function HomePage() {
         </section>
         
          {/* Find the Perfect Piece Section */}
-        <section className="py-24">
+        <section className="py-14">
           <div className="container mx-auto px-4">
               <div className="flex justify-between items-end mb-12">
                   <div>
@@ -232,7 +232,7 @@ export default function HomePage() {
 
 
         {/* Testimonials Section */}
-        <section className="bg-secondary py-24">
+        <section className="bg-secondary py-14">
             <div className="container mx-auto px-4">
               <Carousel opts={{ align: "start", loop: testimonials.length > 2 }}>
                   <div className="flex justify-between items-end mb-12">
