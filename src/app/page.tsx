@@ -126,7 +126,7 @@ export default function HomePage() {
         {/* Crafting Comfort Section */}
         <section className="py-24">
           <div className="container mx-auto px-4">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="flex flex-col md:grid md:grid-cols-2 gap-12 items-center">
                   <div className="lg:pr-12">
                       <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">ABOUT US</p>
                       <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-4 mb-6">Designing Spaces, Inspiring Lives</h2>
