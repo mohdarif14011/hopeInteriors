@@ -24,51 +24,50 @@ export default function ContactPage() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-12 items-start">
-        <Card className="p-4 md:p-8 border-none bg-secondary">
-          <CardHeader>
-            <CardTitle className="font-headline text-2xl">Send a Message</CardTitle>
-            <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Full Name</Label>
-                  <Input id="name" placeholder="John Doe" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email Address</Label>
-                  <Input id="email" type="email" placeholder="john.doe@example.com" />
-                </div>
-              </div>
-              <div className="space-y-2">
-                  <Label htmlFor="service">I'm interested in...</Label>
-                  <Select>
-                      <SelectTrigger id="service">
-                          <SelectValue placeholder="Select a service" />
-                      </SelectTrigger>
-                      <SelectContent>
-                          <SelectItem value="design">Interior Designing</SelectItem>
-                          <SelectItem value="construction">Construction</SelectItem>
-                          <SelectItem value="consultation">Consulting</SelectItem>
-                          <SelectItem value="general">General Inquiry</SelectItem>
-                      </SelectContent>
-                  </Select>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
-                <Textarea id="message" placeholder="Please describe your project or question." rows={5} />
-              </div>
-              <Button type="submit" className="w-full">Send Message</Button>
-            </form>
-          </CardContent>
-        </Card>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+        <div className="md:col-span-2">
+            <Card className="p-4 md:p-8 border-none bg-secondary">
+              <CardHeader>
+                <CardTitle className="font-headline text-2xl">Send a Message</CardTitle>
+                <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Full Name</Label>
+                      <Input id="name" placeholder="John Doe" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email Address</Label>
+                      <Input id="email" type="email" placeholder="john.doe@example.com" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                      <Label htmlFor="service">I'm interested in...</Label>
+                      <Select>
+                          <SelectTrigger id="service">
+                              <SelectValue placeholder="Select a service" />
+                          </SelectTrigger>
+                          <SelectContent>
+                              <SelectItem value="design">Interior Designing</SelectItem>
+                              <SelectItem value="construction">Construction</SelectItem>
+                              <SelectItem value="consultation">Consulting</SelectItem>
+                              <SelectItem value="general">General Inquiry</SelectItem>
+                          </SelectContent>
+                      </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea id="message" placeholder="Please describe your project or question." rows={5} />
+                  </div>
+                  <Button type="submit" className="w-full">Send Message</Button>
+                </form>
+              </CardContent>
+            </Card>
+        </div>
         <div className="space-y-8">
-           <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden">
-              <Image src="https://placehold.co/600x450.png" width={600} height={450} alt="Map to office" data-ai-hint="modern office interior" className="w-full h-full object-cover" />
-            </div>
-            <div className="space-y-6 text-left">
+            <div className="space-y-6 text-left p-6 rounded-xl bg-secondary">
               <div className="flex items-start gap-4">
                   <Mail className="w-6 h-6 text-primary mt-1"/>
                   <div>
