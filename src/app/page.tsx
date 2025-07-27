@@ -161,7 +161,7 @@ export default function HomePage() {
         </section>
         
         {/* Most-Loved Picks Section */}
-        <section className="py-24 bg-secondary">
+        <section className="bg-secondary">
           <div className="container mx-auto px-4">
               <Carousel opts={{ align: "start", loop: projects.length > 2 }}>
               <div className="flex justify-between items-end mb-12">
@@ -234,7 +234,7 @@ export default function HomePage() {
 
 
         {/* Testimonials Section */}
-        <section className="py-24 bg-secondary">
+        <section className="bg-secondary">
             <div className="container mx-auto px-4">
               <Carousel opts={{ align: "start", loop: testimonials.length > 2 }}>
                   <div className="flex justify-between items-end mb-12">
@@ -290,7 +290,7 @@ export default function HomePage() {
         {/* CTA Section */}
         <section className="w-full py-32 relative overflow-hidden">
           <Image src="https://placehold.co/1600x800.png" alt="A beautiful modern interior" data-ai-hint="modern interior" fill className="object-cover -z-10"/>
-          <div className="absolute inset-0 bg-black/50 -z-10"></div>
+          <div className="absolute inset-0 bg-black/70 -z-10"></div>
           <div className="container mx-auto px-4 grid items-center justify-center gap-4 text-center text-white">
             <div className="space-y-4">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-headline">Let's Create Your Dream Space</h2>
