@@ -15,6 +15,7 @@ const navLinks = [
   { href: '/services', label: 'Services' },
   { href: '/portfolio', label: 'Portfolio' },
   { href: '/ai-designer', label: 'AI Designer' },
+  { href: '/consulting', label: 'Consulting' },
   { href: '/contact', label: 'Contact' },
 ];
 

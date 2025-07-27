@@ -49,9 +49,9 @@ export default function ContactPage() {
                           <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
-                          <SelectItem value="design">Full-Service Design</SelectItem>
-                          <SelectItem value="construction">Construction & Renovation</SelectItem>
-                          <SelectItem value="consultation">AI Design Consultation</SelectItem>
+                          <SelectItem value="design">Interior Designing</SelectItem>
+                          <SelectItem value="construction">Construction</SelectItem>
+                          <SelectItem value="consultation">Consulting</SelectItem>
                           <SelectItem value="general">General Inquiry</SelectItem>
                       </SelectContent>
                   </Select>
