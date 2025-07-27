@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -20,15 +21,12 @@ const portfolioSchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters.'),
   description: z.string().min(10, 'Description must be at least 10 characters.'),
   category: z.string({ required_error: 'Please select a category.' }),
-  image: z.string().refine(val => val.startsWith('data:image/'), {
-    message: 'Please upload a valid image file.',
-  }),
+  imageUrl: z.string().url('Please enter a valid URL.'),
 });
 
 type PortfolioFormValues = z.infer<typeof portfolioSchema>;
 
 export default function NewPortfolioItemPage() {
-    const [imagePreview, setImagePreview] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const router = useRouter();
     const { toast } = useToast();
@@ -38,21 +36,11 @@ export default function NewPortfolioItemPage() {
         defaultValues: {
             title: '',
             description: '',
+            imageUrl: '',
         },
     });
 
-    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files[0]) {
-            const file = e.target.files[0];
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                const result = reader.result as string;
-                setImagePreview(result);
-                form.setValue('image', result, { shouldValidate: true });
-            };
-            reader.readAsDataURL(file);
-        }
-    };
+    const imageUrlValue = form.watch('imageUrl');
 
     const onSubmit = async (values: PortfolioFormValues) => {
         setIsSubmitting(true);
@@ -139,21 +127,21 @@ export default function NewPortfolioItemPage() {
 
                              <FormField
                                 control={form.control}
-                                name="image"
+                                name="imageUrl"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Project Image</FormLabel>
+                                        <FormLabel>Project Image URL</FormLabel>
                                         <FormControl>
-                                            <Input type="file" accept="image/*" onChange={handleImageChange} />
+                                            <Input placeholder="https://example.com/image.png" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
                                 )}
                             />
 
-                             {imagePreview && (
+                             {imageUrlValue && (
                                 <div className="mt-4">
-                                     <Image src={imagePreview} alt="Preview" width={200} height={150} className="rounded-md object-cover" />
+                                     <Image src={imageUrlValue} alt="Preview" width={200} height={150} className="rounded-md object-cover" />
                                 </div>
                              )}
                         
