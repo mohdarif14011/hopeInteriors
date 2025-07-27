@@ -219,16 +219,14 @@ export default function HomePage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                   {roomCategories.map(category => (
-                      <Link href="/portfolio" key={category.name}>
-                          <div className="relative group overflow-hidden rounded-xl aspect-square">
-                              <Image src={category.image} fill alt={category.name} data-ai-hint={category.hint} className="object-cover" />
-                              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
-                              <div className="absolute bottom-0 left-0 p-6 text-white">
-                                  <h3 className="text-xl font-bold font-headline">{category.name}</h3>
-                                  <p className="text-sm opacity-80">{category.description}</p>
-                              </div>
+                      <div key={category.name} className="relative overflow-hidden rounded-xl aspect-square">
+                          <Image src={category.image} fill alt={category.name} data-ai-hint={category.hint} className="object-cover" />
+                          <div className="absolute inset-0 bg-black/40 transition-colors duration-300"></div>
+                          <div className="absolute bottom-0 left-0 p-6 text-white">
+                              <h3 className="text-xl font-bold font-headline">{category.name}</h3>
+                              <p className="text-sm opacity-80">{category.description}</p>
                           </div>
-                      </Link>
+                      </div>
                   ))}
               </div>
           </div>
