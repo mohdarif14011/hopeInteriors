@@ -82,7 +82,7 @@ export default function AdminPortfolioPage() {
                                                 alt={project.title}
                                                 className="aspect-square rounded-md object-cover"
                                                 height="64"
-                                                src={project.coverImageUrl}
+                                                src={project.coverImageUrl || 'https://placehold.co/64x64.png'}
                                                 width="64"
                                             />
                                         </TableCell>
