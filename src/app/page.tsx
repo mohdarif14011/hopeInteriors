@@ -146,12 +146,12 @@ export default function HomePage() {
                   </div>
                    <div className="relative w-full aspect-[3/4] max-w-md mx-auto">
                       <Image
-                          src="https://placehold.co/600x800.png"
+                          src="https://res.cloudinary.com/dbjx14ajj/image/upload/v1753622788/house_pcm7zs.jpg"
                           width={600}
                           height={800}
                           alt="A designer sketching interior plans"
                           data-ai-hint="interior designer sketching"
-                          className="object-cover rounded-xl"
+                          className="object-cover rounded-xl mt-14"
                       />
                   </div>
               </div>
@@ -159,7 +159,7 @@ export default function HomePage() {
         </section>
         
         {/* Most-Loved Picks Section */}
-        <section className="bg-secondary py-14">
+        <section className="bg-secondary py-15">
           <div className="container mx-auto px-4">
               <Carousel opts={{ align: "start", loop: projects.length > 2 }}>
               <div className="flex justify-between items-end mb-12">

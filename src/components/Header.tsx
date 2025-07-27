@@ -7,8 +7,9 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { DesignVerseLogo } from './FrnitureLogo';
 import { Button } from './ui/button';
-import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from './ui/sheet';
 import { Menu, User } from 'lucide-react';
+import { VisuallyHidden } from './ui/visually-hidden';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -77,6 +78,9 @@ export function Header() {
                     </Button>
                 </SheetTrigger>
                 <SheetContent side="right">
+                    <VisuallyHidden>
+                      <SheetTitle>Mobile Navigation Menu</SheetTitle>
+                    </VisuallyHidden>
                     <nav className="flex flex-col gap-6 text-lg font-medium mt-10">
                          {navLinks.map(({ href, label }) => (
                             <Link
