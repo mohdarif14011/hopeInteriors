@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -161,7 +160,7 @@ export default function HomePage() {
         </section>
         
         {/* Most-Loved Picks Section */}
-        <section className="bg-secondary">
+        <section className="bg-secondary py-24">
           <div className="container mx-auto px-4">
               <Carousel opts={{ align: "start", loop: projects.length > 2 }}>
               <div className="flex justify-between items-end mb-12">
@@ -234,7 +233,7 @@ export default function HomePage() {
 
 
         {/* Testimonials Section */}
-        <section className="bg-secondary">
+        <section className="bg-secondary py-24">
             <div className="container mx-auto px-4">
               <Carousel opts={{ align: "start", loop: testimonials.length > 2 }}>
                   <div className="flex justify-between items-end mb-12">
@@ -289,7 +288,7 @@ export default function HomePage() {
 
         {/* CTA Section */}
         <section className="w-full py-32 relative overflow-hidden">
-          <Image src="https://placehold.co/1600x800.png" alt="A beautiful modern interior" data-ai-hint="modern interior" fill className="object-cover -z-10"/>
+          <Image src="https://res.cloudinary.com/dbjx14ajj/image/upload/v1752990479/modern-luxury-living-room-interior-design-with-dark-sofa-plant-decoration_1_xovgjl.jpg" alt="A beautiful modern interior" data-ai-hint="dark modern interior" fill className="object-cover -z-10"/>
           <div className="absolute inset-0 bg-black/80 -z-10"></div>
           <div className="container mx-auto px-4 grid items-center justify-center gap-4 text-center text-white">
             <div className="space-y-4">
@@ -310,3 +309,5 @@ export default function HomePage() {
     </>
   );
 }
+
+    
