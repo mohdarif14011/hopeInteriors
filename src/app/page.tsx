@@ -157,10 +157,11 @@ export default function HomePage() {
                           </div>
                       </div>
                   </div>
-                   <div className="relative w-full aspect-square max-w-md mx-auto">
+                   <div className="relative w-full aspect-[3/4] max-w-md mx-auto">
                       <Image
-                          src="https://placehold.co/600x600.png"
-                          fill
+                          src="https://placehold.co/600x800.png"
+                          width={600}
+                          height={800}
                           alt="A designer sketching interior plans"
                           data-ai-hint="interior designer sketching"
                           className="object-cover rounded-xl"
