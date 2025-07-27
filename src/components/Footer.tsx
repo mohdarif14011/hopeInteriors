@@ -30,7 +30,6 @@ export function Footer() {
                     <Link href="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
                     <Link href="/portfolio" className="text-muted-foreground hover:text-primary transition-colors">Portfolio</Link>
                     <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link>
-                    <Link href="/admin" className="text-muted-foreground hover:text-primary transition-colors">Admin</Link>
                 </nav>
             </div>
 

@@ -2,14 +2,67 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import { getPortfolioItems, Project } from "@/services/portfolio";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
+export interface Project {
+    id: string;
+    title: string;
+    description: string;
+    category: string;
+    imageUrl: string;
+}
+
+const staticPortfolioItems: Project[] = [
+    {
+        id: '1',
+        title: 'Modern Living Room',
+        description: 'A spacious living room with a minimalist aesthetic and natural light.',
+        category: 'Living Room',
+        imageUrl: 'https://placehold.co/600x400.png',
+    },
+    {
+        id: '2',
+        title: 'Cozy Bedroom Retreat',
+        description: 'A serene bedroom designed for relaxation and comfort.',
+        category: 'Bedroom',
+        imageUrl: 'https://placehold.co/600x400.png',
+    },
+    {
+        id: '3',
+        title: 'Gourmet Kitchen',
+        description: 'A state-of-the-art kitchen for the passionate home chef.',
+        category: 'Kitchen',
+        imageUrl: 'https://placehold.co/600x400.png',
+    },
+     {
+        id: '4',
+        title: 'Luxury Bathroom',
+        description: 'A spa-like bathroom with premium fixtures and finishes.',
+        category: 'Bathroom',
+        imageUrl: 'https://placehold.co/600x400.png',
+    },
+    {
+        id: '5',
+        title: 'Outdoor Oasis',
+        description: 'A beautiful outdoor space perfect for entertaining or relaxing.',
+        category: 'Outdoor',
+        imageUrl: 'https://placehold.co/600x400.png',
+    },
+    {
+        id: '6',
+        title: 'Productive Home Office',
+        description: 'A stylish and functional home office to inspire creativity.',
+        category: 'Office',
+        imageUrl: 'https://placehold.co/600x400.png',
+    }
+];
+
+
 const categories = ["All", "Living Room", "Bedroom", "Kitchen", "Bathroom", "Outdoor", "Office"];
 
-export default async function PortfolioPage() {
-  const portfolioItems = await getPortfolioItems();
+export default function PortfolioPage() {
+  const portfolioItems = staticPortfolioItems;
 
   return (
     <>
