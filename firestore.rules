@@ -1,10 +1,10 @@
-
 rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow read/write access to the portfolio collection only for authenticated users
-    match /portfolio/{document=**} {
+    // Allow admin users (anyone authenticated) to read the list of projects
+    // and to create new projects.
+    match /portfolio/{project} {
       allow read, write: if request.auth != null;
     }
   }
