@@ -12,7 +12,7 @@ export default async function ProjectDetailPage({ params: { id } }: { params: { 
     notFound();
   }
 
-  const allImages = [project.coverImageUrl, ...project.imageUrls];
+  const allImages = [project.coverImageUrl, ...project.imageUrls].filter(url => url && url.trim() !== '');
 
   return (
     <>
