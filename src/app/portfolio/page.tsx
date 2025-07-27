@@ -79,7 +79,7 @@ export default function PortfolioPage() {
                         <Card className="overflow-hidden group transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                           <div className="aspect-[4/3] overflow-hidden">
                              <Image
-                              src={item.coverImageUrl}
+                              src={item.coverImageUrl || 'https://placehold.co/600x400.png'}
                               width={600}
                               height={400}
                               alt={item.title}
