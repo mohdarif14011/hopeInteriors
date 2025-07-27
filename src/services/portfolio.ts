@@ -1,6 +1,6 @@
 
 import { db, storage } from '@/lib/firebase';
-import { collection, addDoc, getDocs, serverTimestamp, QueryDocumentSnapshot, DocumentData, doc, getDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, serverTimestamp, QueryDocumentSnapshot, DocumentData, doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 
 export interface Project {
     id: string;
@@ -70,6 +70,30 @@ export const addPortfolioItem = async (project: NewProject): Promise<{ success: 
         return { success: true, id: docRef.id };
     } catch (error: any) {
         console.error("Error adding portfolio item: ", error);
+        return { success: false, error: error.message };
+    }
+};
+
+// Function to update an existing portfolio item
+export const updatePortfolioItem = async (id: string, project: NewProject): Promise<{ success: boolean; error?: string }> => {
+    try {
+        const docRef = doc(db, 'portfolio', id);
+        await updateDoc(docRef, project);
+        return { success: true };
+    } catch (error: any) {
+        console.error("Error updating portfolio item: ", error);
+        return { success: false, error: error.message };
+    }
+};
+
+// Function to delete a portfolio item
+export const deletePortfolioItem = async (id: string): Promise<{ success: boolean; error?: string }> => {
+    try {
+        const docRef = doc(db, 'portfolio', id);
+        await deleteDoc(docRef);
+        return { success: true };
+    } catch (error: any) {
+        console.error("Error deleting portfolio item: ", error);
         return { success: false, error: error.message };
     }
 };
