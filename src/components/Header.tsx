@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 import { DesignVerseLogo } from './FrnitureLogo';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
-import { Menu } from 'lucide-react';
+import { Menu, User } from 'lucide-react';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -33,6 +33,11 @@ export function Header() {
   
   const isHomePage = pathname === '/';
   const isTransparent = isHomePage && !hasScrolled;
+  const isAdminPage = pathname.startsWith('/admin');
+
+  if (isAdminPage) {
+    return null;
+  }
 
   return (
     <header className={cn(
@@ -59,29 +64,36 @@ export function Header() {
             ))}
         </nav>
 
-         <Sheet>
-            <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden">
-                    <Menu className={cn("h-6 w-6", isTransparent ? 'text-white' : 'text-foreground')}/>
-                </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-                <nav className="flex flex-col gap-6 text-lg font-medium mt-10">
-                     {navLinks.map(({ href, label }) => (
-                        <Link
-                            key={href}
-                            href={href}
-                            className={cn(
-                            "transition-colors hover:text-primary",
-                             pathname === href ? 'text-primary' : 'text-foreground'
-                            )}
-                        >
-                            {label}
-                        </Link>
-                    ))}
-                </nav>
-            </SheetContent>
-        </Sheet>
+        <div className="flex items-center gap-2">
+            <Link href="/admin">
+              <Button variant="ghost" size="icon" aria-label="Admin Login">
+                <User className={cn("h-5 w-5", isTransparent ? 'text-white' : 'text-foreground')} />
+              </Button>
+            </Link>
+            <Sheet>
+                <SheetTrigger asChild>
+                    <Button variant="ghost" size="icon" className="md:hidden">
+                        <Menu className={cn("h-6 w-6", isTransparent ? 'text-white' : 'text-foreground')}/>
+                    </Button>
+                </SheetTrigger>
+                <SheetContent side="right">
+                    <nav className="flex flex-col gap-6 text-lg font-medium mt-10">
+                         {navLinks.map(({ href, label }) => (
+                            <Link
+                                key={href}
+                                href={href}
+                                className={cn(
+                                "transition-colors hover:text-primary",
+                                 pathname === href ? 'text-primary' : 'text-foreground'
+                                )}
+                            >
+                                {label}
+                            </Link>
+                        ))}
+                    </nav>
+                </SheetContent>
+            </Sheet>
+        </div>
       </div>
     </header>
   );
