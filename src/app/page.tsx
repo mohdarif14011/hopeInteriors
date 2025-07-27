@@ -3,7 +3,6 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Star, ArrowRight, ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,6 +13,7 @@ import { useEffect, useState } from 'react';
 import { getPortfolioItems, Project } from '@/services/portfolio';
 import { getTestimonials, Testimonial } from '@/services/testimonials';
 import { Skeleton } from '@/components/ui/skeleton';
+import { AiDesignIdeas } from '@/components/AiDesignIdeas';
 
 const roomCategories = [
     {
@@ -286,28 +286,11 @@ export default function HomePage() {
             </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="w-full py-32 relative overflow-hidden">
-          <Image src="https://res.cloudinary.com/dbjx14ajj/image/upload/v1752990479/modern-luxury-living-room-interior-design-with-dark-sofa-plant-decoration_1_xovgjl.jpg" alt="A beautiful modern interior" data-ai-hint="dark modern interior" fill className="object-cover -z-10"/>
-          <div className="absolute inset-0 bg-black/80 -z-10"></div>
-          <div className="container mx-auto px-4 grid items-center justify-center gap-4 text-center text-white">
-            <div className="space-y-4">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tight font-headline">Let's Create Your Dream Space</h2>
-              <p className="mx-auto max-w-2xl text-white/80 md:text-xl">
-                Ready to transform your home or business? Contact us today for a consultation and let's begin the journey of creating a space that is uniquely yours.
-              </p>
-            </div>
-            <div className="mx-auto w-full max-w-sm space-y-2">
-               <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-black">
-                  <Link href="/contact">Book a Consultation</Link>
-                </Button>
-            </div>
-          </div>
-        </section>
+        {/* AI Design Ideas Section */}
+        <AiDesignIdeas />
+
       </div>
       <Footer />
     </>
   );
 }
-
-    
