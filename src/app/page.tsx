@@ -289,6 +289,19 @@ export default function HomePage() {
         {/* AI Design Ideas Section */}
         <AiDesignIdeas />
 
+         {/* Let's Create Your Dream Space Section */}
+        <section className="py-24 bg-gray-900 text-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl lg:text-5xl font-bold font-headline mb-4">Let's Create Your Dream Space</h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
+              Ready to transform your home or business? Contact us today for a consultation and let's begin the journey of creating a space that is uniquely yours.
+            </p>
+            <Button asChild size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-black">
+              <Link href="/contact">Book a Consultation</Link>
+            </Button>
+          </div>
+        </section>
+
       </div>
       <Footer />
     </>
