@@ -5,11 +5,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { DesignVerseLogo } from '@/components/FrnitureLogo';
-import { LayoutGrid, Briefcase, PlusCircle } from 'lucide-react';
+import { LayoutGrid, Briefcase, PlusCircle, Mail } from 'lucide-react';
 
 const adminNavLinks = [
   { href: '/admin/portfolio', label: 'Manage Portfolio', icon: Briefcase },
   { href: '/admin/portfolio/new', label: 'Add Project', icon: PlusCircle },
+  { href: '/admin/messages', label: 'Messages', icon: Mail },
 ];
 
 export default function AdminSidebar() {
