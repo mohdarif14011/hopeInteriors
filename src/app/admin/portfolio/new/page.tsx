@@ -41,6 +41,7 @@ export default function NewPortfolioItemPage() {
     });
 
     const imageUrlValue = form.watch('imageUrl');
+    const isUrlValid = z.string().url().safeParse(imageUrlValue).success;
 
     const onSubmit = async (values: PortfolioFormValues) => {
         setIsSubmitting(true);
@@ -139,7 +140,7 @@ export default function NewPortfolioItemPage() {
                                 )}
                             />
 
-                             {imageUrlValue && (
+                             {isUrlValid && (
                                 <div className="mt-4">
                                      <Image src={imageUrlValue} alt="Preview" width={200} height={150} className="rounded-md object-cover" />
                                 </div>
