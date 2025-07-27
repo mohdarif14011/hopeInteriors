@@ -5,7 +5,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Star, ArrowRight } from 'lucide-react';
+import { Star, ArrowRight, ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
@@ -185,39 +185,25 @@ export default function HomePage() {
                   {loading ? (
                      Array.from({ length: 3 }).map((_, i) => (
                         <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/3">
-                           <Card className="overflow-hidden border-none shadow-none bg-transparent">
-                             <CardContent className="p-0">
-                               <Skeleton className="bg-background rounded-lg aspect-square mb-4"/>
-                               <div className="flex justify-between items-start">
-                                   <div>
-                                       <Skeleton className="h-4 w-16 mb-2"/>
-                                       <Skeleton className="h-5 w-40 mb-1"/>
-                                       <Skeleton className="h-4 w-32"/>
-                                   </div>
-                                    <Skeleton className="h-6 w-12"/>
-                               </div>
-                             </CardContent>
-                           </Card>
+                           <Skeleton className="bg-background rounded-lg aspect-square w-full"/>
                         </CarouselItem>
                       ))
                   ) : (
                     projects.map((item) => (
                       <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/3">
-                        <Card className="overflow-hidden border-none shadow-none bg-transparent">
-                          <CardContent className="p-0">
-                            <div className="bg-background rounded-lg p-4 aspect-square relative group mb-4">
-                                <Image src={item.imageUrl} width={400} height={400} alt={item.title} data-ai-hint={item.category} className="w-full h-full object-cover"/>
+                        <Link href="/portfolio">
+                          <Card className="overflow-hidden group relative border-none shadow-md rounded-xl">
+                            <Image src={item.imageUrl} width={400} height={400} alt={item.title} data-ai-hint={item.category} className="w-full h-full object-cover aspect-square transition-transform duration-500 group-hover:scale-105"/>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                            <div className="absolute bottom-0 left-0 p-6 text-white">
+                                <p className="text-xs font-semibold uppercase tracking-wider opacity-80">{item.category}</p>
+                                <h3 className="text-xl font-bold font-headline">{item.title}</h3>
                             </div>
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{item.category}</p>
-                                    <h3 className="text-lg font-semibold font-headline">{item.title}</h3>
-                                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                                </div>
-                                 <Link href={`/portfolio`} className="text-lg font-bold">View</Link>
+                             <div className="absolute top-4 right-4 bg-background/80 text-foreground p-2 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                                <ArrowUpRight className="w-5 h-5" />
                             </div>
-                          </CardContent>
-                        </Card>
+                          </Card>
+                        </Link>
                       </CarouselItem>
                     ))
                   )}
