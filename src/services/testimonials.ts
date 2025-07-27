@@ -9,7 +9,6 @@ export interface Testimonial {
     rating: number;
     title: string;
     comment: string;
-    avatarUrl: string;
     createdAt?: any;
 }
 
@@ -19,7 +18,6 @@ export interface NewTestimonial {
     rating: number;
     title: string;
     comment: string;
-    avatarUrl: string;
 }
 
 const testimonialsCollection = collection(db, 'testimonials');
@@ -34,7 +32,6 @@ export const getTestimonials = async (): Promise<Testimonial[]> => {
         rating: doc.data().rating,
         title: doc.data().title,
         comment: doc.data().comment,
-        avatarUrl: doc.data().avatarUrl,
         createdAt: doc.data().createdAt,
     }));
 };
@@ -52,7 +49,6 @@ export const getTestimonial = async (id: string): Promise<Testimonial | null> =>
             rating: data.rating,
             title: data.title,
             comment: data.comment,
-            avatarUrl: data.avatarUrl,
             createdAt: data.createdAt,
         };
     } else {

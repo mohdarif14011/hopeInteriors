@@ -23,7 +23,6 @@ const formSchema = z.object({
   location: z.string().min(2, 'Location is required.'),
   title: z.string().min(3, 'Title is required.'),
   comment: z.string().min(10, 'Comment must be at least 10 characters.'),
-  avatarUrl: z.string().url({ message: "Please enter a valid avatar URL." }).min(1, 'Avatar URL is required.'),
   rating: z.coerce.number().min(1).max(5),
 });
 
@@ -176,20 +175,6 @@ export default function EditTestimonialPage() {
                     </FormItem>
                   )}
                 />
-
-                <FormField
-                  control={form.control}
-                  name="avatarUrl"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Avatar Image URL</FormLabel>
-                      <FormControl>
-                        <Input placeholder="https://example.com/avatar.png" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                  />
               
                   <FormField
                       control={form.control}

@@ -24,7 +24,6 @@ const TestimonialSkeleton = () => (
     <Card className="flex flex-col text-left p-4">
         <CardHeader>
             <div className="flex items-center gap-4">
-                <Skeleton className="w-12 h-12 rounded-full" />
                 <div className="w-full">
                     <Skeleton className="h-5 w-1/2 mb-2" />
                     <Skeleton className="h-4 w-1/4" />
@@ -83,10 +82,6 @@ export default function TestimonialsPage() {
                 <Card key={testimonial.id} className="flex flex-col text-left p-4">
                     <CardHeader>
                     <div className="flex items-center gap-4">
-                        <Avatar className="w-12 h-12">
-                        <AvatarImage src={testimonial.avatarUrl} alt={testimonial.name} data-ai-hint="person portrait" />
-                        <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-                        </Avatar>
                         <div>
                         <CardTitle className="font-headline text-lg">{testimonial.name}</CardTitle>
                         <CardDescription>{testimonial.location}</CardDescription>

@@ -256,7 +256,6 @@ export default function HomePage() {
                                 <Card className="h-full bg-background border-none shadow-sm flex flex-col justify-between p-8">
                                     <Skeleton className="h-24 w-full" />
                                     <div className="flex items-center gap-4 mt-6">
-                                        <Skeleton className="h-12 w-12 rounded-full" />
                                         <div className="w-full">
                                             <Skeleton className="h-5 w-1/2" />
                                         </div>
@@ -278,14 +277,8 @@ export default function HomePage() {
                                         "{testimonial.comment}"
                                     </blockquote>
                                 </div>
-                                <div className="flex items-center gap-4">
-                                    <Avatar className="w-12 h-12">
-                                        <AvatarImage src={testimonial.avatarUrl} data-ai-hint="person portrait"/>
-                                        <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-                                    </Avatar>
-                                    <div>
-                                        <p className="font-semibold">{testimonial.name}</p>
-                                    </div>
+                                <div>
+                                    <p className="font-semibold">{testimonial.name}</p>
                                 </div>
                             </Card>
                         </CarouselItem>
