@@ -18,7 +18,7 @@ import Link from 'next/link';
 import { ArrowLeft, Loader2 } from 'lucide-react';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 
-const categories = ["Living Room", "Bedroom", "Kitchen", "Bathroom", "Outdoor", "Office"];
+const categories = ["Living Room", "Bedroom", "Kitchen", "Bathroom", "Outdoor", "Office", "Other"];
 
 const formSchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters long.'),

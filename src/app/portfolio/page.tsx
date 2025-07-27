@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 
-const categories = ["All", "Living Room", "Bedroom", "Kitchen", "Bathroom", "Outdoor", "Office"];
+const categories = ["All", "Living Room", "Bedroom", "Kitchen", "Bathroom", "Outdoor", "Office", "Other"];
 
 export default function PortfolioPage() {
   const [portfolioItems, setPortfolioItems] = useState<Project[]>([]);
@@ -65,7 +65,7 @@ export default function PortfolioPage() {
             </div>
           ) : (
             <Tabs defaultValue="All" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 md:grid-cols-7 mb-8">
+              <TabsList className="grid w-full grid-cols-4 md:grid-cols-8 mb-8">
                 {categories.map(category => (
                   <TabsTrigger key={category} value={category}>{category}</TabsTrigger>
                 ))}
