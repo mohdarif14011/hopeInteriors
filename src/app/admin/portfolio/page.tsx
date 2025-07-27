@@ -82,7 +82,7 @@ export default function AdminPortfolioPage() {
                                                 alt={project.title}
                                                 className="aspect-square rounded-md object-cover"
                                                 height="64"
-                                                src={project.imageUrl}
+                                                src={project.coverImageUrl}
                                                 width="64"
                                             />
                                         </TableCell>

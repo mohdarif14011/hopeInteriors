@@ -191,9 +191,9 @@ export default function HomePage() {
                   ) : (
                     projects.map((item) => (
                       <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/3">
-                        <Link href="/portfolio">
+                        <Link href={`/portfolio/${item.id}`}>
                           <Card className="overflow-hidden group relative border-none shadow-md rounded-xl">
-                            <Image src={item.imageUrl} width={400} height={400} alt={item.title} data-ai-hint={item.category} className="w-full h-full object-cover aspect-square transition-transform duration-500 group-hover:scale-105"/>
+                            <Image src={item.coverImageUrl} width={400} height={400} alt={item.title} data-ai-hint={item.category} className="w-full h-full object-cover aspect-square transition-transform duration-500 group-hover:scale-105"/>
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                             <div className="absolute bottom-0 left-0 p-6 text-white">
                                 <p className="text-xs font-semibold uppercase tracking-wider opacity-80">{item.category}</p>

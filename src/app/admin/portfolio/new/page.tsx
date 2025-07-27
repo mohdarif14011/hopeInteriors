@@ -16,7 +16,7 @@ import { useToast } from '@/components/ui/toast';
 import { addPortfolioItem } from '@/services/portfolio';
 import Link from 'next/link';
 import { ArrowLeft, Loader2 } from 'lucide-react';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 
 const categories = ["Living Room", "Bedroom", "Kitchen", "Bathroom", "Outdoor", "Office"];
 
@@ -24,7 +24,8 @@ const formSchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters long.'),
   description: z.string().min(10, 'Description must be at least 10 characters long.'),
   category: z.string({ required_error: 'Please select a category.' }),
-  imageUrl: z.string().url({ message: "Please enter a valid URL." }),
+  coverImageUrl: z.string().url({ message: "Please enter a valid cover image URL." }),
+  imageUrls: z.string().min(1, 'Please enter at least one image URL.'),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -39,13 +40,22 @@ export default function NewProjectPage() {
     defaultValues: {
       title: '',
       description: '',
-      imageUrl: '',
+      coverImageUrl: '',
+      imageUrls: '',
     },
   });
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setLoading(true);
-    const result = await addPortfolioItem(data);
+    const imageUrlsArray = data.imageUrls.split('\n').filter(url => url.trim() !== '');
+
+    const result = await addPortfolioItem({
+        title: data.title,
+        description: data.description,
+        category: data.category,
+        coverImageUrl: data.coverImageUrl,
+        imageUrls: imageUrlsArray,
+    });
     setLoading(false);
 
     if (result.success) {
@@ -131,17 +141,35 @@ export default function NewProjectPage() {
 
               <FormField
                 control={form.control}
-                name="imageUrl"
+                name="coverImageUrl"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Project Image URL</FormLabel>
+                    <FormLabel>Cover Image URL</FormLabel>
                     <FormControl>
-                      <Input placeholder="https://example.com/image.png" {...field} />
+                      <Input placeholder="https://example.com/cover-image.png" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
                 />
+            
+              <FormField
+                control={form.control}
+                name="imageUrls"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Additional Image URLs</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="https://example.com/image1.png&#10;https://example.com/image2.png" {...field} rows={4}/>
+                    </FormControl>
+                    <FormDescription>
+                        Enter one image URL per line.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+                />
+
 
               <div className="flex justify-end gap-2">
                 <Button variant="outline" asChild>

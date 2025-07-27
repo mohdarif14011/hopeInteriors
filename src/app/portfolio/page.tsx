@@ -10,6 +10,7 @@ import type { Project } from '@/services/portfolio';
 import { getPortfolioItems } from '@/services/portfolio';
 import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import Link from "next/link";
 
 const categories = ["All", "Living Room", "Bedroom", "Kitchen", "Bathroom", "Outdoor", "Office"];
 
@@ -74,24 +75,26 @@ export default function PortfolioPage() {
                 <TabsContent key={category} value={category}>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {(category === "All" ? portfolioItems : portfolioItems.filter(item => item.category === category)).map((item: Project) => (
-                      <Card key={item.id} className="overflow-hidden group transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                        <div className="aspect-[4/3] overflow-hidden">
-                           <Image
-                            src={item.imageUrl}
-                            width={600}
-                            height={400}
-                            alt={item.title}
-                            data-ai-hint={item.category}
-                            className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-                          />
-                        </div>
-                        <CardHeader>
-                          <CardTitle className="font-headline text-xl">{item.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                          <CardDescription>{item.description}</CardDescription>
-                        </CardContent>
-                      </Card>
+                      <Link href={`/portfolio/${item.id}`} key={item.id}>
+                        <Card className="overflow-hidden group transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                          <div className="aspect-[4/3] overflow-hidden">
+                             <Image
+                              src={item.coverImageUrl}
+                              width={600}
+                              height={400}
+                              alt={item.title}
+                              data-ai-hint={item.category}
+                              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                            />
+                          </div>
+                          <CardHeader>
+                            <CardTitle className="font-headline text-xl">{item.title}</CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <CardDescription>{item.description}</CardDescription>
+                          </CardContent>
+                        </Card>
+                      </Link>
                     ))}
                   </div>
                 </TabsContent>
