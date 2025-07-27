@@ -1,16 +1,67 @@
 
+'use client';
+
+import { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from '@/components/ui/form';
+import { useToast } from '@/components/ui/toast';
+import { addContactMessage } from '@/services/contact';
+
+const formSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters.'),
+  email: z.string().email('Please enter a valid email address.'),
+  service: z.string({ required_error: 'Please select a service.' }),
+  message: z.string().min(10, 'Message must be at least 10 characters long.'),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
 
 export default function ContactPage() {
+  const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+    },
+  });
+
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    setLoading(true);
+    const result = await addContactMessage(data);
+    setLoading(false);
+
+    if (result.success) {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll get back to you shortly.",
+      });
+      form.reset();
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: result.error || "An unknown error occurred.",
+      });
+    }
+  };
+
   return (
     <>
     <Header/>
@@ -32,37 +83,78 @@ export default function ContactPage() {
                 <CardDescription>Fill out the form below and we'll get back to you as soon as possible.</CardDescription>
               </CardHeader>
               <CardContent>
-                <form className="space-y-4">
+                <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Full Name</Label>
-                      <Input id="name" placeholder="John Doe" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email Address</Label>
-                      <Input id="email" type="email" placeholder="john.doe@example.com" />
-                    </div>
+                     <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Full Name</FormLabel>
+                            <FormControl>
+                              <Input placeholder="John Doe" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email Address</FormLabel>
+                            <FormControl>
+                              <Input type="email" placeholder="john.doe@example.com" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                   </div>
-                  <div className="space-y-2">
-                      <Label htmlFor="service">I'm interested in...</Label>
-                      <Select>
-                          <SelectTrigger id="service">
+                  <FormField
+                    control={form.control}
+                    name="service"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>I'm interested in...</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
                               <SelectValue placeholder="Select a service" />
-                          </SelectTrigger>
+                            </SelectTrigger>
+                          </FormControl>
                           <SelectContent>
                               <SelectItem value="design">Interior Designing</SelectItem>
                               <SelectItem value="construction">Construction</SelectItem>
                               <SelectItem value="consultation">Consulting</SelectItem>
                               <SelectItem value="general">General Inquiry</SelectItem>
                           </SelectContent>
-                      </Select>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea id="message" placeholder="Please describe your project or question." rows={5} />
-                  </div>
-                  <Button type="submit" className="w-full">Send Message</Button>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Message</FormLabel>
+                        <FormControl>
+                            <Textarea placeholder="Please describe your project or question." rows={5} {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button type="submit" className="w-full" disabled={loading}>
+                    {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    Send Message
+                  </Button>
                 </form>
+                </Form>
               </CardContent>
             </Card>
         </div>
