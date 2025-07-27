@@ -10,17 +10,17 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 
-export default function ProjectDetailPage({ params }: { params: { id: string } }) {
+export default function ProjectDetailPage({ params: { id } }: { params: { id: string } }) {
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (params.id) {
+    if (id) {
       const fetchProject = async () => {
         try {
           setLoading(true);
-          const item = await getPortfolioItem(params.id);
+          const item = await getPortfolioItem(id);
           if (!item) {
             notFound();
           }
@@ -34,7 +34,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
       };
       fetchProject();
     }
-  }, [params.id]);
+  }, [id]);
 
   if (loading) {
     return (
