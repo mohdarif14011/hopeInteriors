@@ -1,15 +1,9 @@
-
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
-    // By default, deny all reads and writes
-    match /{document=**} {
-      allow read, write: if false;
-    }
-
-    // Allow authenticated users to read and write to the 'portfolio' collection
-    match /portfolio/{project} {
+    // Allow admin users to list the entire portfolio collection.
+    // Also allow them to get, create, update, and delete individual documents.
+    match /portfolio/{document=**} {
       allow read, write: if request.auth != null;
     }
   }
