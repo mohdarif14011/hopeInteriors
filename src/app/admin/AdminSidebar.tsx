@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { DesignVerseLogo } from '@/components/FrnitureLogo';
+import { HopeInteriorsLogo } from '@/components/HopeInteriorsLogo';
 import { LayoutGrid, Briefcase, PlusCircle, Mail, Star } from 'lucide-react';
 
 const adminNavLinks = [
@@ -22,7 +22,7 @@ export default function AdminSidebar() {
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex h-16 items-center border-b px-6">
           <Link href="/admin">
-            <DesignVerseLogo />
+            <HopeInteriorsLogo />
           </Link>
         </div>
         <div className="flex-1 overflow-y-auto">

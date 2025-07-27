@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Instagram } from 'lucide-react';
-import { DesignVerseLogo } from './FrnitureLogo';
+import { HopeInteriorsLogo } from './HopeInteriorsLogo';
 
 export function Footer() {
   return (
@@ -11,9 +11,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Column 1: About */}
             <div className="space-y-4 lg:col-span-2">
-                <DesignVerseLogo/>
+                <HopeInteriorsLogo/>
                 <p className="text-sm text-muted-foreground max-w-md">
-                   DesignVerse is a premier interior design firm dedicated to creating beautiful, functional, and timeless spaces that reflect the unique personality of our clients.
+                   hope interiors is a premier interior design firm dedicated to creating beautiful, functional, and timeless spaces that reflect the unique personality of our clients.
                 </p>
                 <div className="flex space-x-4">
                     <Link href="https://www.instagram.com/_hope_interior_?igsh=MW03MTRlNzV6eXk0dA==" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors"><Instagram className="w-5 h-5"/></Link>
@@ -43,7 +43,7 @@ export function Footer() {
         </div>
 
         <div className="border-t mt-12 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} DesignVerse. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} hope interiors. All rights reserved.</p>
         </div>
       </div>
     </footer>

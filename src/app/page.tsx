@@ -118,7 +118,7 @@ export default function HomePage() {
                       <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">ABOUT US</p>
                       <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-4 mb-6">Designing Spaces, Inspiring Lives</h2>
                       <p className="text-muted-foreground mb-8 max-w-prose">
-                          At DesignVerse, we believe that a well-designed space has the power to transform your life. Our philosophy centers on creating environments that are not only beautiful but also deeply personal and functional. We blend artistry with a meticulous process to deliver exceptional interiors.
+                          At hope interiors, we believe that a well-designed space has the power to transform your life. Our philosophy centers on creating environments that are not only beautiful but also deeply personal and functional. We blend artistry with a meticulous process to deliver exceptional interiors.
                       </p>
                        <div className="grid gap-6">
                           <div className="flex items-center gap-4">

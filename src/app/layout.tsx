@@ -5,8 +5,8 @@ import { ToastProvider, ToastViewport } from "@/components/ui/toast"
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: 'DesignVerse - Crafting Exceptional Interiors',
-  description: 'DesignVerse is a full-service interior design firm dedicated to creating bespoke, timeless spaces that reflect your personality and lifestyle.',
+  title: 'hope interiors - Crafting Exceptional Interiors',
+  description: 'hope interiors is a full-service interior design firm dedicated to creating bespoke, timeless spaces that reflect your personality and lifestyle.',
 };
 
 export default function RootLayout({

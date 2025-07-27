@@ -11,7 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/components/ui/toast';
 import { Loader2 } from 'lucide-react';
-import { DesignVerseLogo } from '@/components/FrnitureLogo';
+import { HopeInteriorsLogo } from '@/components/HopeInteriorsLogo';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -41,7 +41,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
             <div className="flex justify-center mb-4">
-                <DesignVerseLogo />
+                <HopeInteriorsLogo />
             </div>
           <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
           <CardDescription>Enter your credentials to access the dashboard.</CardDescription>
@@ -53,7 +53,7 @@ export default function LoginPage() {
               <Input
                 id="email"
                 type="email"
-                placeholder="admin@designverse.com"
+                placeholder="admin@hopeinteriors.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required

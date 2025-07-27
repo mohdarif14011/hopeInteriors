@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { DesignVerseLogo } from './FrnitureLogo';
+import { HopeInteriorsLogo } from './HopeInteriorsLogo';
 import { Button } from './ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from './ui/sheet';
 import { Menu, User } from 'lucide-react';
@@ -47,7 +47,7 @@ export function Header() {
     )}>
       <div className="container flex h-20 items-center justify-between">
         <Link href="/">
-            <DesignVerseLogo className={cn(isTransparent ? 'text-white' : 'text-foreground')}/>
+            <HopeInteriorsLogo className={cn(isTransparent ? 'text-white' : 'text-foreground')}/>
         </Link>
         
         <nav className="hidden md:flex items-center gap-6">

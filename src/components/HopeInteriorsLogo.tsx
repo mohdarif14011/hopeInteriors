@@ -32,8 +32,8 @@ export function HopeInteriorsLogo({ className }: { className?: string }) {
           strokeLinejoin="round"
         />
       </svg>
-      <span className="font-headline text-2xl font-bold tracking-wider">
-        HOPE INTERIORS
+      <span className="font-headline text-2xl font-bold tracking-wider uppercase">
+        hope interiors
       </span>
     </div>
   );
