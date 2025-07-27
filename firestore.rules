@@ -1,11 +1,18 @@
 
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Allow admin users to read and write to the portfolio collection
-    match /portfolio/{document=**} {
-      allow read, write: if request.auth != null;
+    // Allow public read access to the portfolio collection
+    match /portfolio/{projectId} {
+      allow get: if true;
+    }
+     match /portfolio {
+      allow list: if true;
+    }
+
+    // Only allow authenticated users to create, update, or delete
+    match /portfolio/{projectId} {
+       allow create, update, delete: if request.auth != null;
     }
   }
 }
