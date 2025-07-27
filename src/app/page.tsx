@@ -11,33 +11,9 @@ import Link from 'next/link';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-
-const lovedPicks = [
-    {
-        sku: 'P-001',
-        name: 'The Atherton Project',
-        description: 'Full-home luxury remodel',
-        price: 'View',
-        image: 'https://placehold.co/400x400.png',
-        hint: 'luxury home interior'
-    },
-    {
-        sku: 'P-002',
-        name: 'The Bayfront Loft',
-        description: 'Modern open-concept living',
-        price: 'View',
-        image: 'https://placehold.co/400x400.png',
-        hint: 'modern loft'
-    },
-    {
-        sku: 'P-003',
-        name: 'The Coastal Retreat',
-        description: 'Serene beachfront villa design',
-        price: 'View',
-        image: 'https://placehold.co/400x400.png',
-        hint: 'beach house interior'
-    },
-];
+import { useEffect, useState } from 'react';
+import { getPortfolioItems, Project } from '@/services/portfolio';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const roomCategories = [
     {
@@ -88,6 +64,26 @@ const testimonials = [
 ];
 
 export default function HomePage() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        setLoading(true);
+        const items = await getPortfolioItems();
+        // Sort by creation date descending and take the first 3
+        const sortedItems = items.sort((a, b) => b.createdAt?.toMillis() - a.createdAt?.toMillis());
+        setProjects(sortedItems.slice(0, 3));
+      } catch (err) {
+        console.error("Failed to fetch projects for homepage", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProjects();
+  }, []);
+
   return (
     <>
       <Header />
@@ -126,7 +122,7 @@ export default function HomePage() {
         {/* Crafting Comfort Section */}
         <section className="py-24">
           <div className="container mx-auto px-4">
-              <div className="flex flex-col md:grid md:grid-cols-2 gap-12 items-center">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
                   <div className="lg:pr-12">
                       <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">ABOUT US</p>
                       <h2 className="text-4xl lg:text-5xl font-bold font-headline mt-4 mb-6">Designing Spaces, Inspiring Lives</h2>
@@ -174,7 +170,7 @@ export default function HomePage() {
         {/* Most-Loved Picks Section */}
         <section className="py-24 bg-secondary">
           <div className="container mx-auto px-4">
-              <Carousel opts={{ align: "start", loop: true }}>
+              <Carousel opts={{ align: "start", loop: projects.length > 2 }}>
               <div className="flex justify-between items-end mb-12">
                   <div>
                       <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Our Portfolio</p>
@@ -186,25 +182,45 @@ export default function HomePage() {
                   </div>
               </div>
                 <CarouselContent>
-                  {lovedPicks.map((item) => (
-                    <CarouselItem key={item.sku} className="md:basis-1/2 lg:basis-1/3">
-                      <Card className="overflow-hidden border-none shadow-none bg-transparent">
-                        <CardContent className="p-0">
-                          <div className="bg-background rounded-lg p-4 aspect-square relative group mb-4">
-                              <Image src={item.image} width={400} height={400} alt={item.name} data-ai-hint={item.hint} className="w-full h-full object-cover"/>
-                          </div>
-                          <div className="flex justify-between items-start">
-                              <div>
-                                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{item.sku}</p>
-                                  <h3 className="text-lg font-semibold font-headline">{item.name}</h3>
-                                  <p className="text-sm text-muted-foreground">{item.description}</p>
-                              </div>
-                               <Link href="/portfolio" className="text-lg font-bold">View</Link>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </CarouselItem>
-                  ))}
+                  {loading ? (
+                     Array.from({ length: 3 }).map((_, i) => (
+                        <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/3">
+                           <Card className="overflow-hidden border-none shadow-none bg-transparent">
+                             <CardContent className="p-0">
+                               <Skeleton className="bg-background rounded-lg aspect-square mb-4"/>
+                               <div className="flex justify-between items-start">
+                                   <div>
+                                       <Skeleton className="h-4 w-16 mb-2"/>
+                                       <Skeleton className="h-5 w-40 mb-1"/>
+                                       <Skeleton className="h-4 w-32"/>
+                                   </div>
+                                    <Skeleton className="h-6 w-12"/>
+                               </div>
+                             </CardContent>
+                           </Card>
+                        </CarouselItem>
+                      ))
+                  ) : (
+                    projects.map((item) => (
+                      <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/3">
+                        <Card className="overflow-hidden border-none shadow-none bg-transparent">
+                          <CardContent className="p-0">
+                            <div className="bg-background rounded-lg p-4 aspect-square relative group mb-4">
+                                <Image src={item.imageUrl} width={400} height={400} alt={item.title} data-ai-hint={item.category} className="w-full h-full object-cover"/>
+                            </div>
+                            <div className="flex justify-between items-start">
+                                <div>
+                                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{item.category}</p>
+                                    <h3 className="text-lg font-semibold font-headline">{item.title}</h3>
+                                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                                </div>
+                                 <Link href={`/portfolio`} className="text-lg font-bold">View</Link>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </CarouselItem>
+                    ))
+                  )}
                 </CarouselContent>
               </Carousel>
           </div>
