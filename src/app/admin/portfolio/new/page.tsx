@@ -7,7 +7,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardDescription, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -24,7 +24,7 @@ const formSchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters long.'),
   description: z.string().min(10, 'Description must be at least 10 characters long.'),
   category: z.string({ required_error: 'Please select a category.' }),
-  image: z.instanceof(File).refine(file => file.size > 0, 'An image is required.'),
+  imageUrl: z.string().url({ message: "Please enter a valid URL." }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -39,6 +39,7 @@ export default function NewProjectPage() {
     defaultValues: {
       title: '',
       description: '',
+      imageUrl: '',
     },
   });
 
@@ -130,25 +131,15 @@ export default function NewProjectPage() {
 
               <FormField
                 control={form.control}
-                name="image"
-                render={({ field: { onChange, value, ...rest } }) => (
-                    <FormItem>
-                        <FormLabel>Project Image</FormLabel>
-                        <FormControl>
-                             <Input 
-                                type="file" 
-                                accept="image/*"
-                                onChange={(e) => {
-                                    const file = e.target.files?.[0];
-                                    if (file) {
-                                        onChange(file);
-                                    }
-                                }}
-                                {...rest}
-                             />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
+                name="imageUrl"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Project Image URL</FormLabel>
+                    <FormControl>
+                      <Input placeholder="https://example.com/image.png" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
                 )}
                 />
 
