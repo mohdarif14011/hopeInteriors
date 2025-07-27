@@ -35,8 +35,6 @@ export async function getPortfolioItems(): Promise<Project[]> {
 }
 
 export async function addPortfolioItem(data: NewProjectData) {
-    console.log("Attempting to add portfolio item with data:", data);
-
     try {
         const projectData = {
             title: data.title,
@@ -46,13 +44,10 @@ export async function addPortfolioItem(data: NewProjectData) {
             createdAt: serverTimestamp()
         };
 
-        console.log("1. Adding project data to Firestore:", projectData);
         const docRef = await addDoc(collection(db, "portfolio"), projectData);
-        console.log("2. Project added to Firestore with ID:", docRef.id);
         
         revalidatePath('/admin/portfolio');
         revalidatePath('/portfolio');
-        console.log("3. Paths revalidated.");
         
         return { success: true, id: docRef.id };
     } catch (error: any) {
