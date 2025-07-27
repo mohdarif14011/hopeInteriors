@@ -13,6 +13,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { useEffect, useState } from 'react';
 import { getPortfolioItems, Project } from '@/services/portfolio';
+import { getTestimonials, Testimonial } from '@/services/testimonials';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const roomCategories = [
@@ -42,46 +43,38 @@ const roomCategories = [
     }
 ]
 
-const testimonials = [
-  {
-    name: "Emily Watson",
-    comment: "Working with DesignVerse was a dream. They understood my vision perfectly and brought it to life with incredible attention to detail. My home now feels both luxurious and deeply personal.",
-    avatar: "https://placehold.co/100x100.png",
-    fallback: "EW",
-  },
-  {
-    name: "John Smith",
-    comment: "The professionalism and creativity of the DesignVerse team are unmatched. They transformed our outdated office into a modern, inspiring workspace that has boosted morale and productivity.",
-    avatar: "https://placehold.co/100x100.png",
-    fallback: "JS",
-  },
-  {
-    name: "Sarah Miller",
-    comment: "From the initial concept to the final reveal, the entire process was seamless and enjoyable. Their expertise in material selection and space planning is truly exceptional. I couldn't be happier.",
-    avatar: "https://placehold.co/100x100.png",
-    fallback: "SM",
-  },
-];
-
 export default function HomePage() {
   const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loadingProjects, setLoadingProjects] = useState(true);
+  const [loadingTestimonials, setLoadingTestimonials] = useState(true);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        setLoading(true);
+        setLoadingProjects(true);
         const items = await getPortfolioItems();
-        // Sort by creation date descending and take the first 3
-        const sortedItems = items.sort((a, b) => b.createdAt?.toMillis() - a.createdAt?.toMillis());
+        const sortedItems = items.sort((a, b) => (b.createdAt?.toMillis() || 0) - (a.createdAt?.toMillis() || 0));
         setProjects(sortedItems.slice(0, 3));
       } catch (err) {
         console.error("Failed to fetch projects for homepage", err);
       } finally {
-        setLoading(false);
+        setLoadingProjects(false);
+      }
+    };
+    const fetchTestimonials = async () => {
+      try {
+        setLoadingTestimonials(true);
+        const items = await getTestimonials();
+        setTestimonials(items);
+      } catch (err) {
+        console.error("Failed to fetch testimonials", err);
+      } finally {
+        setLoadingTestimonials(false);
       }
     };
     fetchProjects();
+    fetchTestimonials();
   }, []);
 
   return (
@@ -182,7 +175,7 @@ export default function HomePage() {
                   </div>
               </div>
                 <CarouselContent>
-                  {loading ? (
+                  {loadingProjects ? (
                      Array.from({ length: 3 }).map((_, i) => (
                         <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/3">
                            <Skeleton className="bg-background rounded-lg aspect-square w-full"/>
@@ -245,7 +238,7 @@ export default function HomePage() {
         {/* Testimonials Section */}
         <section className="py-24 bg-secondary">
             <div className="container mx-auto px-4">
-              <Carousel opts={{ align: "start", loop: true }}>
+              <Carousel opts={{ align: "start", loop: testimonials.length > 2 }}>
                   <div className="flex justify-between items-end mb-12">
                       <div>
                           <p className="text-sm uppercase tracking-widest text-muted-foreground font-semibold">Testimonials</p>
@@ -257,31 +250,47 @@ export default function HomePage() {
                       </div>
                   </div>
                   <CarouselContent>
-                      {testimonials.map((testimonial, index) => (
-                      <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                          <Card className="h-full bg-background border-none shadow-sm flex flex-col justify-between p-8">
-                              <div>
-                                  <div className="flex text-yellow-500 mb-4">
-                                      {[...Array(5)].map((_, i) => (
-                                          <Star key={i} className="w-5 h-5 fill-current" />
-                                      ))}
-                                  </div>
-                                  <blockquote className="text-base text-muted-foreground mb-6">
-                                      "{testimonial.comment}"
-                                  </blockquote>
-                              </div>
-                              <div className="flex items-center gap-4">
-                                  <Avatar className="w-12 h-12">
-                                      <AvatarImage src={testimonial.avatar} data-ai-hint="person portrait"/>
-                                      <AvatarFallback>{testimonial.fallback}</AvatarFallback>
-                                  </Avatar>
-                                  <div>
-                                      <p className="font-semibold">{testimonial.name}</p>
-                                  </div>
-                              </div>
-                          </Card>
-                      </CarouselItem>
-                      ))}
+                      {loadingTestimonials ? (
+                        Array.from({ length: 3 }).map((_, i) => (
+                            <CarouselItem key={i} className="md:basis-1/2 lg:basis-1/3">
+                                <Card className="h-full bg-background border-none shadow-sm flex flex-col justify-between p-8">
+                                    <Skeleton className="h-24 w-full" />
+                                    <div className="flex items-center gap-4 mt-6">
+                                        <Skeleton className="h-12 w-12 rounded-full" />
+                                        <div className="w-full">
+                                            <Skeleton className="h-5 w-1/2" />
+                                        </div>
+                                    </div>
+                                </Card>
+                            </CarouselItem>
+                        ))
+                      ) : (
+                        testimonials.map((testimonial) => (
+                        <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3">
+                            <Card className="h-full bg-background border-none shadow-sm flex flex-col justify-between p-8">
+                                <div>
+                                    <div className="flex text-yellow-500 mb-4">
+                                        {[...Array(testimonial.rating)].map((_, i) => (
+                                            <Star key={i} className="w-5 h-5 fill-current" />
+                                        ))}
+                                    </div>
+                                    <blockquote className="text-base text-muted-foreground mb-6">
+                                        "{testimonial.comment}"
+                                    </blockquote>
+                                </div>
+                                <div className="flex items-center gap-4">
+                                    <Avatar className="w-12 h-12">
+                                        <AvatarImage src={testimonial.avatarUrl} data-ai-hint="person portrait"/>
+                                        <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                                    </Avatar>
+                                    <div>
+                                        <p className="font-semibold">{testimonial.name}</p>
+                                    </div>
+                                </div>
+                            </Card>
+                        </CarouselItem>
+                        ))
+                      )}
                   </CarouselContent>
               </Carousel>
             </div>
